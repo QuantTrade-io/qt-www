@@ -83,8 +83,8 @@ class UserService implements IUserService {
     return this.loggedInUserAccountStatus !== null;
   }
 
-  logout() {
-    this._clear();
+  async logout() {
+    await this.clearStoredDate();
   }
 
   async userRegister(data: ParamsUserRegisterApi): TypePromiseApiResponse {
@@ -173,7 +173,7 @@ class UserService implements IUserService {
       });
     }
     return navigateTo({
-      path: localePath("/platform/home"),
+      path: localePath("/platform/dashboard"),
     });
   }
 
@@ -239,7 +239,7 @@ class UserService implements IUserService {
     }
   }
 
-  async _clear() {
+  async clearStoredDate() {
     await clearPersistedStore(this);
   }
 }

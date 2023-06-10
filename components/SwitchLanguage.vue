@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
     <BaseSwitch
+      :theme-button-id=1
       :item-current="currentLocale"
       :item-list="locales"
       @item-clicked="setLanguage"

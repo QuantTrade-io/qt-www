@@ -3,10 +3,10 @@
     <BaseBackground />
     <div class="mx-auto max-w-2xl py-16">
       <div class="text-center">
-        <h1 class="text-2xl font-bold tracking-tight sm:text-6xl">
+        <h1 class="text-2xl font-bold tracking-tight sm:text-6xl dark:text-slate-200">
           {{ $t("home.hero_leading_text") }}
         </h1>
-        <p class="mt-6 text-l sm:text-lgleading-8 text-slate-500">
+        <p class="mt-6 text-l sm:text-lgleading-8 text-slate-400">
           {{ $t("home.hero_helper_text") }}
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
