@@ -2,7 +2,7 @@
     <!-- Bars Icon (visible until XL screen size) -->
     <button
         type="button"
-        class="-m-2.5 p-2.5 xl:hidden"
+        class="-m-2.5 p-2.5 xl:hidden text-slate-700 dark:text-slate-300"
         @click="$emit('toggleSidebar')"
       >
         <span class="sr-only">Open sidebar</span>

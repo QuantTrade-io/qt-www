@@ -2,7 +2,7 @@
       <!-- Switch Group -->
       <div class="flex">
         <p class="mr-4 text-slate-700 dark:text-slate-300 text-sm">Paper</p>
-        <SwitchGroup class="hidden sm:block">
+        <SwitchGroup>
           <div class="flex items-center">
             <Observer>
             <Switch

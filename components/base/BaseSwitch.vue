@@ -2,7 +2,7 @@
   <div class="w-full">
     <Listbox :v-model="itemList">
       <div class="relative mt-1">
-          <div as="template" class="block text-sm font-medium leading-6 text-white">
+          <div as="template" class="block text-sm font-medium leading-6">
               <ListboxLabel v-if="label" as="div">{{ label }}</ListboxLabel>
           </div>
         <ListboxButton class="relative w-full cursor-pointer">

@@ -23,15 +23,15 @@ const useCustomFetch = () => {
     url,
     method,
     locale,
-    accessToken = null,
-    refreshToken = null,
+    accessToken = false,
+    refreshToken = false,
     body,
   }: {
     url: string;
     method: RequestMethod;
     locale?: string;
-    accessToken?: string | null;
-    refreshToken?: string | null;
+    accessToken?: boolean;
+    refreshToken?: boolean;
     body?: RequestBody;
   }): Promise<TypePromiseApiResponse> => {
     while (true) {
@@ -40,7 +40,7 @@ const useCustomFetch = () => {
         headers["Accept-Language"] = locale;
       }
       if (accessToken) {
-        headers.Authorization = `Bearer ${accessToken}`;
+        headers.Authorization = `Bearer ${userService.loggedInUserAccessToken}`;
       }
       const response = await useFetch(url, {
         baseURL: config.public.apiUrl,
@@ -73,7 +73,7 @@ const useCustomFetch = () => {
             refreshUserTokenResponse.data.value.account_status
           );
         }
-        accessToken = userService.loggedInUserAccessToken;
+        accessToken = true;
 
         continue;
       }

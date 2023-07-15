@@ -28,7 +28,7 @@
                       <!-- Navigation items -->
                       <ul role="list" class="-mx-2 space-y-1">
                         <li v-for="item in links" :key="item.text" @click="$emit('toggleSidebar')">
-                          <NuxtLink :to="localePath(item.to)" active-class="bg-gray-800 text-white" :class="['text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                          <NuxtLink :to="localePath(item.to)" active-class="bg-gray-800 text-white" class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                             <component :is="item.icon" class="h-6 w-6 shrink-0" aria-hidden="true" />
                             {{ item.text }}
                           </NuxtLink>
@@ -40,16 +40,16 @@
                       <ul role="list" class="-mx-2 mt-2 space-y-1">
                         <!-- Favourite items -->
                         <li v-for="favourite in favourites" :key="favourite.text">
-                          <a :href="favourite.to" class="text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                          <a :href="favourite.to" class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                             <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">{{ favourite.initial }}</span>
                             <span class="truncate">{{ favourite.text }}</span>
                           </a>
                         </li>
                       </ul>
                     </li>
-                    <li>
+                    <li class="sm:hidden">
                       <div class="text-xs font-semibold leading-6 text-slate-700 dark:text-slate-300">Settings</div>
-                      <ul role="list" class="mt-2 space-y-1 flex items-center">
+                      <ul role="list" class="mt-4 space-y-1 flex items-center">
                         <!-- TradingMode Toggle -->
                         <li>
                           <SwitchTradingMode />

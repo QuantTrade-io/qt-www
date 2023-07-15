@@ -17,7 +17,7 @@
 
   const links = [
     { text: 'Dashboard', to: '/platform/dashboard', icon: HomeIcon },
-    { text: 'My Strategies', to: '/platform/strategies', icon: FolderIcon },
+    { text: 'Trade', to: '/platform/strategies', icon: FolderIcon },
     { text: 'Design', to: '/platform/design', icon: PencilSquareIcon },
     { text: 'Brokers', to: '/platform/brokers', icon: GlobeAltIcon },
   ]

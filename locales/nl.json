@@ -1,7 +1,9 @@
 {
   "global": {
     "util": {
-      "or": "Of"
+      "or": "Of",
+      "save": "Opslaan",
+      "saving": "Opslaan"
     },
     "get_started": "Aan de slag",
     "learn_more": "Leer meer",
@@ -50,14 +52,15 @@
       "field_password_too_short": "Wachtwoord is te kort (minimaal 10 karakters)",
       "field_terms_of_service": "Servicevoorwaarden moeten geaccepteerd worden",
       "registered": "Email is nog niet geverifiëerd",
-      "change_email_requested": "Email veranderen is reeds aangevraagd, volg de stappen in je email",
-      "change_password_requested": "Wachtwoord verandered is reeds aangevraagd, volg de stappen in je email"
+      "change_email_requested": "Email veranderen is reeds aangevraagd, volg de stappen in je email"
     },
     "fields": {
       "email_address": "E-mailadres",
       "first_name": "Voornaam",
       "last_name": "Achternaam",
       "password": "Wachtwoord",
+      "password_old": "Huidig wachtwoord",
+      "password_new": "Nieuw wachtwoord",
       "accepts_terms": "Accepteer algemene voorwaarden",
       "download_terms": "Download algemene voorwaarden"
     }
@@ -260,6 +263,7 @@
     "hero_leading_text": "Groei als investeerder of handelaar.",
     "hero_helper_text": "Kies het plan dat past bij jou en stop wanneer jij wil.",
     "buy_plan": "Neem dit plan",
+    "buying_plan": "Betaling voorbereiden",
     "tier_trader": {
       "name": "Handelaar",
       "backtesting": "Backtesten",
@@ -313,7 +317,9 @@
     "billing": {
       "hero_leading_text": "Registratie afronden",
       "logout": "Uitloggen",
-      "platform": "Platform"
+      "platform": "Platform",
+      "stripe_portal": "Open betaal portaal",
+      "stripe_portal_loading": "Betaal portaal laden"
     }
   }
 }

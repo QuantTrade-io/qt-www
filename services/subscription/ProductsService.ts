@@ -1,9 +1,8 @@
 import { computed, makeAutoObservable } from "mobx";
 import { ParamsBaseApi } from "../base/TypesBaseService";
 import { TypePromiseApiResponse } from "../response/TypesApiResponseHandler";
-import { userService } from "../user/UserService";
 import { IProductsService } from "./IProductsService";
-import { ParamsGetStripeCheckoutApi } from "./TypeProductsService";
+import { ParamsGetStripeCheckoutApi, ParamsGetStripeBillingPortalApi } from "./TypeProductsService";
 import { Interval } from "~/models/subscription/Interval";
 import { Product } from "~/models/subscription/Product";
 import { TypeProduct } from "~/types/subscription/TypeProduct";
@@ -19,6 +18,7 @@ export class ProductsService implements IProductsService {
    */
   static PRODUCTS_URL = `/v1/billing/products/`;
   static CREATE_STRIPE_CHECKOUT_SESSION = `/v1/billing/checkout-session/`;
+  static CREATE_STRIPE_BILLING_PORTAL = `/v1/billing/portal/`
 
   products: Product[] = [];
 
@@ -53,8 +53,22 @@ export class ProductsService implements IProductsService {
       url,
       method: "GET",
       locale: data.locale,
-      accessToken: userService.loggedInUserAccessToken,
-      refreshToken: userService.loggedInUserRefreshToken,
+      accessToken: true,
+      refreshToken: true,
+    });
+  }
+
+  async getStripeBillingPortal(data: ParamsGetStripeBillingPortalApi) {
+    const fetch = useCustomFetch();
+
+    const url = ProductsService.CREATE_STRIPE_BILLING_PORTAL;
+
+    return await fetch.request({
+      url,
+      method: "GET",
+      locale: data.locale,
+      accessToken: true,
+      refreshToken: true,
     });
   }
 

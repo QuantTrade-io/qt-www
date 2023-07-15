@@ -28,6 +28,4 @@ defineProps<Props>();
 defineEmits<{
   (e: "toggleSidebar"): void;
 }>();
-
-const localePath = useLocalePath();
 </script>

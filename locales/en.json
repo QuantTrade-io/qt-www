@@ -1,7 +1,9 @@
 {
   "global": {
     "util": {
-      "or": "Or"
+      "or": "Or",
+      "save": "Save",
+      "saving": "Saving"
     },
     "get_started": "Get Started",
     "learn_more": "Learn more",
@@ -47,17 +49,18 @@
       "field_first_name_required": "First name is required",
       "field_last_name_required": "Last name is required",
       "field_password_required": "Password is required",
-      "field_password_too_short": "Password too short (minimum of 10 characters",
+      "field_password_too_short": "Password too short (minimum of 10 characters)",
       "field_terms_of_service": "Terms of Service must be accepted",
       "registered": "Email is not verified",
-      "change_email_requested": "Change email was requested, please follow the steps in the email.",
-      "change_password_requested": "Change password was requested, please follow the steps in the email"
+      "change_email_requested": "Change email was requested, please follow the steps in the email."
     },
     "fields": {
       "email_address": "Email address",
       "first_name": "Fist Name",
       "last_name": "Last Name",
       "password": "Password",
+      "password_old": "Current Password",
+      "password_new": "New Password",
       "accepts_terms": "Accepts Terms & conditions",
       "download_terms": "Download Terms & Conditions"
     }
@@ -260,6 +263,7 @@
     "hero_leading_text": "Grow as a Trader or Investor.",
     "hero_helper_text": "Pick the plan that suits you best, cancel at any time.",
     "buy_plan": "Pick this plan",
+    "buying_plan": "Create checkout",
     "tier_trader": {
       "name": "Trader",
       "backtesting": "Backtester",
@@ -313,7 +317,9 @@
     "billing": {
       "hero_leading_text": "Finish Registration",
       "logout": "Logout",
-      "platform": "Platform"
+      "platform": "Platform",
+      "stripe_portal": "Open billing Portal",
+      "stripe_portal_loading": "Loading billing Portal"
     }
   }
 }

@@ -22,3 +22,10 @@ export interface ParamsUserLoginApi extends ParamsBaseApi {
     password: string;
   };
 }
+
+export interface ParamsAuthenticatedUserSettingsApi extends ParamsBaseApi {
+  body: {
+    password_old: string;
+    password_new: string;
+  }
+}

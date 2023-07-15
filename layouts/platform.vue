@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="sticky top-0 z-10">
       <TheSidebar :sidebar-open="sidebarOpen" @toggle-sidebar="toggleSidebar"/>
       <TheTopbar :sidebar-open="sidebarOpen" @toggle-sidebar="toggleSidebar"/>
     </div>
