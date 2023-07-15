@@ -1,11 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import {
-  makePersistable,
-} from "mobx-persist-store";
+import { makePersistable } from "mobx-persist-store";
 
 import { ITradingModeService } from "./ITradingModeService";
-import { getJSDocThisTag } from "typescript";
-import { TradingMode } from "~/models/trading-mode/TradingMode";
 
 export class TradingModeService implements ITradingModeService {
   /**
@@ -16,22 +12,20 @@ export class TradingModeService implements ITradingModeService {
    * The TradingModeService implements the ITradingModeService.
    *
    */
-  tradingLive: boolean = false;
+  tradingLive = false;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
 
     makePersistable(this, {
       name: "TradingMode",
-      properties: [
-        "tradingLive",
-      ],
+      properties: ["tradingLive"],
       storage: window.localStorage,
     });
   }
 
   toggleTradingMode() {
-    this.tradingLive = !this.tradingLive
+    this.tradingLive = !this.tradingLive;
   }
 }
 

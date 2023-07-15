@@ -2,8 +2,11 @@ import { BaseModel } from "../base/BaseModel";
 import { ITradingMode } from "./ITradingMode";
 import { DataTradingMode } from "./DataTradingMode";
 
-// eslint-disable-next-line no-use-before-define
-export class TradingMode extends BaseModel<TradingMode> implements ITradingMode {
+export class TradingMode
+  // eslint-disable-next-line no-use-before-define
+  extends BaseModel<TradingMode>
+  implements ITradingMode
+{
   /**
    * Class that acts like an object, which contains all the information regarding a TradingMode.
    *
@@ -12,7 +15,7 @@ export class TradingMode extends BaseModel<TradingMode> implements ITradingMode 
    * A TradingMode can basically be; 'paper' or 'live', which means trading with fake money or real money.
    * The TradingMode extends the BaseModel model and implements an interface called ITradingMode.
    *
-   * @param TradingMode - That contains the following: id, name, @param DataTradingMode 
+   * @param TradingMode - That contains the following: id, name, @param DataTradingMode
    * @returns The implemented model of a TradingMode which can be used throughout the codebase in order to represent TradingMode information.
    *
    */

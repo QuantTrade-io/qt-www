@@ -2,7 +2,10 @@ import { computed, makeAutoObservable } from "mobx";
 import { ParamsBaseApi } from "../base/TypesBaseService";
 import { TypePromiseApiResponse } from "../response/TypesApiResponseHandler";
 import { IProductsService } from "./IProductsService";
-import { ParamsGetStripeCheckoutApi, ParamsGetStripeBillingPortalApi } from "./TypeProductsService";
+import {
+  ParamsGetStripeCheckoutApi,
+  ParamsGetStripeBillingPortalApi,
+} from "./TypeProductsService";
 import { Interval } from "~/models/subscription/Interval";
 import { Product } from "~/models/subscription/Product";
 import { TypeProduct } from "~/types/subscription/TypeProduct";
@@ -18,7 +21,7 @@ export class ProductsService implements IProductsService {
    */
   static PRODUCTS_URL = `/v1/billing/products/`;
   static CREATE_STRIPE_CHECKOUT_SESSION = `/v1/billing/checkout-session/`;
-  static CREATE_STRIPE_BILLING_PORTAL = `/v1/billing/portal/`
+  static CREATE_STRIPE_BILLING_PORTAL = `/v1/billing/portal/`;
 
   products: Product[] = [];
 

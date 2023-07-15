@@ -70,11 +70,11 @@
                 )
               "
             >
-            <BaseSpinnerSmall
-              :submit-in-progress="submitInProgress"
-              spinner-text="pricing.buying_plan"
-              button-text="pricing.buy_plan"
-            />
+              <BaseSpinnerSmall
+                :submit-in-progress="submitInProgress"
+                spinner-text="pricing.buying_plan"
+                button-text="pricing.buy_plan"
+              />
             </button>
           </div>
           <div class="mt-8 flow-root sm:mt-10">

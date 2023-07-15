@@ -43,7 +43,7 @@ class UserService implements IUserService {
   loggedInUserAccessToken: string | null = null;
   loggedInUserRefreshToken: string | null = null;
   loggedInUserAccountStatus: string | null = null;
-  loggedInUserSubscribed: boolean = false;
+  loggedInUserSubscribed = false;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -54,7 +54,7 @@ class UserService implements IUserService {
         "loggedInUserAccessToken",
         "loggedInUserRefreshToken",
         "loggedInUserAccountStatus",
-        "loggedInUserSubscribed"
+        "loggedInUserSubscribed",
       ],
       storage: window.localStorage,
     });
@@ -144,7 +144,9 @@ class UserService implements IUserService {
     });
   }
 
-  async authenticatedUserSettings(data: ParamsAuthenticatedUserSettingsApi): TypePromiseApiResponse {
+  async authenticatedUserSettings(
+    data: ParamsAuthenticatedUserSettingsApi
+  ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({

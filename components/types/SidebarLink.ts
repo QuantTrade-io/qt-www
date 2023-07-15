@@ -1,11 +1,11 @@
 import {
-    FunctionalComponent,
-    HTMLAttributes,
-    VNodeProps,
+  FunctionalComponent,
+  HTMLAttributes,
+  VNodeProps,
 } from "nuxt/dist/app/compat/capi";
 
 export interface PropsSidebarLink {
-    text: string;
-    to: string;
-    icon: FunctionalComponent<HTMLAttributes & VNodeProps, {}>;
+  text: string;
+  to: string;
+  icon: FunctionalComponent<HTMLAttributes & VNodeProps, {}>;
 }

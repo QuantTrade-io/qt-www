@@ -27,5 +27,5 @@ export interface ParamsAuthenticatedUserSettingsApi extends ParamsBaseApi {
   body: {
     password_old: string;
     password_new: string;
-  }
+  };
 }

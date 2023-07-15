@@ -1,27 +1,33 @@
 <template>
-    <div class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
+  <div
+    class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+  >
     <div>
-        <h2 class="text-base font-semibold leading-7 dark:text-slate-200">Change password</h2>
-        <p class="mt-1 text-sm leading-6 text-slate-400">Update your password associated with your account. This will require a re-login on all of your devices.</p>
+      <h2 class="text-base font-semibold leading-7 dark:text-slate-200">
+        Change password
+      </h2>
+      <p class="mt-1 text-sm leading-6 text-slate-400">
+        Update your password associated with your account. This will require a
+        re-login on all of your devices.
+      </p>
     </div>
 
     <form class="md:col-span-2" @submit.prevent="onSubmit">
       <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
         <div class="col-span-full">
-            <div class="mt-2">
-                <PasswordOldField/>
-            </div>
+          <div class="mt-2">
+            <PasswordOldField />
+          </div>
         </div>
 
         <div class="col-span-full">
-            <div class="mt-2">
-              <PasswordNewField />
-            </div>
+          <div class="mt-2">
+            <PasswordNewField />
+          </div>
         </div>
-
       </div>
 
-        <div class="mt-8 flex">
+      <div class="mt-8 flex">
         <BaseButton
           :button-theme="themeButtonService.getThemeButtonById(5)"
           :disabled="submitInProgress"
@@ -32,10 +38,10 @@
             spinner-text="global.util.saving"
             button-text="global.util.save"
           />
-          </BaseButton>
-        </div>
+        </BaseButton>
+      </div>
     </form>
-    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -46,7 +52,6 @@ import { themeButtonService } from "~/services/theme/ThemeButtonService";
 import { userService } from "~/services/user/UserService";
 import { EApiResponseStatus } from "~/services/response/EApiResponseHandler";
 import { modalMessageService } from "~/services/response/ModalMessageService";
-import { ModalMessage } from "~/models/response/ModalMessage";
 import { ToastMessage } from "~/models/response/ToastMessage";
 import { toastMessageService } from "~/services/response/ToastMessageService";
 
@@ -68,10 +73,9 @@ const schema = object().shape({
     .min(10, () => t("global.messages.field_password_too_short")),
 });
 
-const { handleSubmit, setErrors, resetForm } = useForm({
+const { handleSubmit, setErrors } = useForm({
   validationSchema: schema,
 });
-
 
 const onSubmit = handleSubmit(async (values) => {
   submitInProgress.value = true;
@@ -103,7 +107,7 @@ const onSubmit = handleSubmit(async (values) => {
   await userService.logout();
 
   // Notify user about success
-  modalMessageService.addModal({ 
+  modalMessageService.addModal({
     id: Math.random(),
     title: message.title,
     message: `${message.message} Automatic logout within 5 seconds`,
@@ -119,11 +123,11 @@ const onSubmit = handleSubmit(async (values) => {
   });
   // Refresh page in order to make sure that all the tokens are removed
   setTimeout(() => {
-    window.location.reload()
+    window.location.reload();
     navigateTo({
-        path: localePath("/auth/login"),
-      });
-  },5000);
+      path: localePath("/auth/login"),
+    });
+  }, 5000);
 });
 
 const localePath = useLocalePath();

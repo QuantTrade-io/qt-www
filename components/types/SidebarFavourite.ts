@@ -1,5 +1,5 @@
 export interface PropsSidebarFavourite {
-    text: string;
-    to: string;
-    initial: string;
+  text: string;
+  to: string;
+  initial: string;
 }

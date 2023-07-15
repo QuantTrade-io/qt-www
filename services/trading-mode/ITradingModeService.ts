@@ -1,3 +1,3 @@
 export interface ITradingModeService {
-    toggleTradingMode(): void;
+  toggleTradingMode(): void;
 }

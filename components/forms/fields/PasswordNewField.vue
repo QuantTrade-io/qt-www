@@ -2,11 +2,21 @@
   <div>
     <label for="password_new" class="block text-sm font-medium leading-6">
       <div class="flex items-center">
-          {{ $t("global.fields.password_new") }}
-          <span class="ml-2 flex">
-          <EyeIcon v-if="showPassword" class="h-4 w-4 hover:cursor-pointer" @click.prevent="toggleShowPassword" aria-hidden="true" />
-          <EyeSlashIcon v-else class="h-4 w-4 hover:cursor-pointer" @click.prevent="toggleShowPassword" aria-hidden="true" />
-          </span>
+        {{ $t("global.fields.password_new") }}
+        <span class="ml-2 flex">
+          <EyeIcon
+            v-if="showPassword"
+            class="h-4 w-4 hover:cursor-pointer"
+            aria-hidden="true"
+            @click.prevent="toggleShowPassword"
+          />
+          <EyeSlashIcon
+            v-else
+            class="h-4 w-4 hover:cursor-pointer"
+            aria-hidden="true"
+            @click.prevent="toggleShowPassword"
+          />
+        </span>
       </div>
     </label>
     <div class="mt-1">
@@ -25,13 +35,12 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import { EyeIcon, EyeSlashIcon } from "@heroicons/vue/20/solid";
 
-const showPassword = ref(false)
+const showPassword = ref(false);
 
 function toggleShowPassword() {
-  showPassword.value = !showPassword.value
+  showPassword.value = !showPassword.value;
 }
 </script>
