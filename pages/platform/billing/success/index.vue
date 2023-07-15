@@ -2,7 +2,7 @@
   <div class="flex h-screen">
     <div class="flex flex-1 flex-col overflow-auto">
       <NuxtLink
-        :to="localePath('/platform/home')"
+        :to="localePath('/platform/dashboard')"
         class="mt-2 ml-2"
         aria-label="Home"
       >

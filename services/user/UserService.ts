@@ -15,6 +15,7 @@ import {
   ParamsUserLoginApi,
   ParamsUserRegisterApi,
   ParamsUserVerifyEmailApi,
+  ParamsAuthenticatedUserSettingsApi,
 } from "./TypesUserService";
 import { EAccountStatus } from "./EUserService";
 import { IUserService } from "./IUserService";
@@ -36,9 +37,13 @@ class UserService implements IUserService {
   static USER_VERIFY_EMAIL_URL = `/v1/auth/user-register/verify-email/`;
   static USER_LOGIN_REFRESH_TOKEN_URL = `/v1/auth/refresh-token/`;
 
+  static AUTHENTICATED_USER_URL = `/v1/auth/user/`;
+  static AUTHENTICATED_USER_SETTINGS_URL = `/v1/auth/user/settings/`;
+
   loggedInUserAccessToken: string | null = null;
   loggedInUserRefreshToken: string | null = null;
   loggedInUserAccountStatus: string | null = null;
+  loggedInUserSubscribed = false;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -49,6 +54,7 @@ class UserService implements IUserService {
         "loggedInUserAccessToken",
         "loggedInUserRefreshToken",
         "loggedInUserAccountStatus",
+        "loggedInUserSubscribed",
       ],
       storage: window.localStorage,
     });
@@ -71,6 +77,10 @@ class UserService implements IUserService {
     this.loggedInUserAccountStatus = accountStatus;
   }
 
+  setLoggedInUserSubscribed(subscribed: boolean) {
+    this.loggedInUserSubscribed = subscribed;
+  }
+
   hasLoggedInUserRefreshToken() {
     return this.loggedInUserRefreshToken !== null;
   }
@@ -83,8 +93,8 @@ class UserService implements IUserService {
     return this.loggedInUserAccountStatus !== null;
   }
 
-  logout() {
-    this._clear();
+  async logout() {
+    await this.clearStoredDate();
   }
 
   async userRegister(data: ParamsUserRegisterApi): TypePromiseApiResponse {
@@ -134,6 +144,21 @@ class UserService implements IUserService {
     });
   }
 
+  async authenticatedUserSettings(
+    data: ParamsAuthenticatedUserSettingsApi
+  ): TypePromiseApiResponse {
+    const fetch = useCustomFetch();
+
+    return await fetch.request({
+      url: UserService.AUTHENTICATED_USER_SETTINGS_URL,
+      method: "PATCH",
+      locale: data.locale,
+      accessToken: true,
+      refreshToken: true,
+      body: data.body,
+    });
+  }
+
   _handleSuccessfullLogin(apiResponse: any, message: ReturnHandleResponse) {
     toastMessageService.addToast(
       new ToastMessage({
@@ -145,7 +170,8 @@ class UserService implements IUserService {
     );
     this.setLoggedInUserTokens(apiResponse.token);
     this.setLoggedInUserAccountStatus(apiResponse.account_status);
-    this._redirectSuccessfullLogin(apiResponse.account_status);
+    this.setLoggedInUserSubscribed(apiResponse.subscribed);
+    this._redirectSuccessfullLogin(apiResponse.subscribed);
   }
 
   _handleSuccessfullAccessTokenLogin(
@@ -162,18 +188,19 @@ class UserService implements IUserService {
     );
     this.setLoggedInUserAccessToken(apiResponse.access_token);
     this.setLoggedInUserAccountStatus(apiResponse.account_status);
+    this.setLoggedInUserSubscribed(apiResponse.subscribed);
     return this._redirectSuccessfullLogin(apiResponse.account_status);
   }
 
-  _redirectSuccessfullLogin(accountStatus: string) {
+  _redirectSuccessfullLogin(subscribed: boolean) {
     const localePath = useLocalePath();
-    if (accountStatus === EAccountStatus.verified) {
+    if (!subscribed) {
       return navigateTo({
         path: localePath("/platform/billing"),
       });
     }
     return navigateTo({
-      path: localePath("/platform/home"),
+      path: localePath("/platform/dashboard"),
     });
   }
 
@@ -203,7 +230,7 @@ class UserService implements IUserService {
           label: "Rerequest email verification",
         });
         return [buttons, "global.messages.registered"];
-      case EAccountStatus.reset_email:
+      case EAccountStatus.change_email:
         buttons.push({
           id: 1,
           to: "/auth/reset/email",
@@ -211,14 +238,6 @@ class UserService implements IUserService {
           label: "Rerequest change email",
         });
         return [buttons, "global.messages.change_email_requested"];
-      case EAccountStatus.reset_password:
-        buttons.push({
-          id: 1,
-          to: "/auth/reset/password",
-          themeId: 5,
-          label: "Rerequest change password",
-        });
-        return [buttons, "global.messages.change_password_requested"];
       default:
         return [
           [
@@ -239,7 +258,7 @@ class UserService implements IUserService {
     }
   }
 
-  async _clear() {
+  async clearStoredDate() {
     await clearPersistedStore(this);
   }
 }

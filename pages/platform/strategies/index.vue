@@ -1,5 +1,5 @@
 <template>
-  <p>DASHBOARD</p>
+  <p>MY STRATEGIES</p>
 </template>
 
 <script setup lang="ts">

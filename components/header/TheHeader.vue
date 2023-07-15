@@ -15,7 +15,7 @@
 import HeaderDesktop from "./locals/HeaderDesktop.vue";
 import HeaderContainer from "./locals/HeaderContainer.vue";
 
-import { PropsHeaderLink } from "~/types/PropsHeaderLink";
+import { PropsHeaderLink } from "@/components/types/PropsHeaderLink";
 
 const links: PropsHeaderLink[] = [
   // Text comes from Translations

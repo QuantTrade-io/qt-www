@@ -38,7 +38,7 @@ import { ToastMessage } from "~/models/response/ToastMessage";
 const { localeProperties } = useI18n();
 
 definePageMeta({
-  layout: "platform",
+  layout: "auth",
   middleware: ["check-logged-in-user-tokens"],
 });
 

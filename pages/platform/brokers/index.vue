@@ -1,5 +1,5 @@
 <template>
-  <p>PLATFORM HOME</p>
+  <p>BROKERS</p>
 </template>
 
 <script setup lang="ts">

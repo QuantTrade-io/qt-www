@@ -33,10 +33,10 @@ export enum EButtonSize {
    * @param cirkel - padding on all 4 sides are equalt which makes this button theme a cirkel
    *
    */
-  xxs = "py-1 px-2 text-xs",
+  xxs = "py-1 px-2 text-xs min-w-[80px]",
   xs = "px-2.5 py-1.5 text-xs",
   s = "px-3 py-2 text-sm",
-  m = "px-4 py-2 text-sm",
+  m = "px-4 py-2 text-sm min-w-[120px]",
   l = "px-4 py-2 text-base",
   xl = "px-6 py-3 text-base",
   cirkel = "p-2 text-sm",

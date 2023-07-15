@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-x-4 align-middle">
+  <div class="flex justify-between items-center space-x-4">
     <!-- Header Theme && Language switch -->
     <SwitchThemeColor />
     <SwitchLanguage />

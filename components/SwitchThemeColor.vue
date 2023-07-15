@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
     <BaseSwitch
+      :theme-button-id="1"
       :item-current="themeColorService.getTheme()"
       :item-list="themeColorService.themes"
       @item-clicked="setTheme"

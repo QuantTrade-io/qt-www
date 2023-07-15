@@ -6,7 +6,7 @@
       >
         <div>
           <h2
-            class="text-base font-semibold leading-7 dark:text-pink-200 text-pink-400"
+            class="text-base font-semibold leading-7 dark:text-pink-400 text-pink-400"
           >
             {{ $t("features.hero.pre_title") }}
           </h2>
