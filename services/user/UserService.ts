@@ -15,7 +15,8 @@ import {
   ParamsUserLoginApi,
   ParamsUserRegisterApi,
   ParamsUserVerifyEmailApi,
-  ParamsAuthenticatedUserSettingsApi,
+  ParamsPatchAuthenticatedUserApi,
+  ParamsPatchAuthenticatedUserSettingsApi,
 } from "./TypesUserService";
 import { EAccountStatus } from "./EUserService";
 import { IUserService } from "./IUserService";
@@ -45,6 +46,12 @@ class UserService implements IUserService {
   loggedInUserAccountStatus: string | null = null;
   loggedInUserSubscribed = false;
 
+  authenticatedUserEmail: string | null = null;
+  authenticatedUserFirstName: string | null = null;
+  authenticatedUserLastName: string | null = null;
+  authenticatedUserImage: string | null = null;
+  authenticatedUserDevices: any = null;
+
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
 
@@ -55,6 +62,10 @@ class UserService implements IUserService {
         "loggedInUserRefreshToken",
         "loggedInUserAccountStatus",
         "loggedInUserSubscribed",
+        "authenticatedUserEmail",
+        "authenticatedUserFirstName",
+        "authenticatedUserLastName",
+        "authenticatedUserImage",
       ],
       storage: window.localStorage,
     });
@@ -81,6 +92,22 @@ class UserService implements IUserService {
     this.loggedInUserSubscribed = subscribed;
   }
 
+  setAuthenticatedUserEmail(email: string) {
+    this.authenticatedUserEmail = email;
+  }
+
+  setAuthenticatedUserFirstName(firstName: string) {
+    this.authenticatedUserFirstName = firstName;
+  }
+
+  setAuthenticatedUserLastName(lastName: string) {
+    this.authenticatedUserLastName = lastName;
+  }
+
+  setAuthenticatedUserImage(image: string) {
+    this.authenticatedUserImage = image;
+  }
+
   hasLoggedInUserRefreshToken() {
     return this.loggedInUserRefreshToken !== null;
   }
@@ -91,6 +118,10 @@ class UserService implements IUserService {
 
   hasLoggedInUserAccountStatus() {
     return this.loggedInUserAccountStatus !== null;
+  }
+
+  getAuthenticatedUserFullName() {
+    return `${this.authenticatedUserFirstName} ${this.authenticatedUserLastName}`
   }
 
   async logout() {
@@ -144,8 +175,34 @@ class UserService implements IUserService {
     });
   }
 
-  async authenticatedUserSettings(
-    data: ParamsAuthenticatedUserSettingsApi
+  async getAuthenticatedUser(): TypePromiseApiResponse {
+    const fetch = useCustomFetch();
+
+    return await fetch.request({
+      url: UserService.AUTHENTICATED_USER_URL,
+      method: "GET",
+      accessToken: true,
+      refreshToken: true,
+    });
+  }
+
+  async patchAuthenticatedUser (
+    data: ParamsPatchAuthenticatedUserApi
+  ): TypePromiseApiResponse {
+    const fetch = useCustomFetch();
+
+    return await fetch.request({
+      url: UserService.AUTHENTICATED_USER_URL,
+      method: "PATCH",
+      locale: data.locale,
+      accessToken: true,
+      refreshToken: true,
+      body: data.body,
+    });
+  }
+
+  async patchAuthenticatedUserSettings(
+    data: ParamsPatchAuthenticatedUserSettingsApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
@@ -200,8 +257,15 @@ class UserService implements IUserService {
       });
     }
     return navigateTo({
-      path: localePath("/platform/dashboard"),
+      path: localePath("/platform"),
     });
+  }
+
+  _handleAuthenticatedUserResponse(apiResponse: any) {
+    this.setAuthenticatedUserEmail(apiResponse.email)
+    this.setAuthenticatedUserFirstName(apiResponse.first_name)
+    this.setAuthenticatedUserLastName(apiResponse.last_name)
+    this.setAuthenticatedUserImage(apiResponse.image)
   }
 
   _handleUnsuccessfullLogin(responseMessage: ReturnHandleResponse) {
