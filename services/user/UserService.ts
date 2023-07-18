@@ -121,7 +121,7 @@ class UserService implements IUserService {
   }
 
   getAuthenticatedUserFullName() {
-    return `${this.authenticatedUserFirstName} ${this.authenticatedUserLastName}`
+    return `${this.authenticatedUserFirstName} ${this.authenticatedUserLastName}`;
   }
 
   async logout() {
@@ -186,7 +186,7 @@ class UserService implements IUserService {
     });
   }
 
-  async patchAuthenticatedUser (
+  async patchAuthenticatedUser(
     data: ParamsPatchAuthenticatedUserApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
@@ -262,10 +262,10 @@ class UserService implements IUserService {
   }
 
   _handleAuthenticatedUserResponse(apiResponse: any) {
-    this.setAuthenticatedUserEmail(apiResponse.email)
-    this.setAuthenticatedUserFirstName(apiResponse.first_name)
-    this.setAuthenticatedUserLastName(apiResponse.last_name)
-    this.setAuthenticatedUserImage(apiResponse.image)
+    this.setAuthenticatedUserEmail(apiResponse.email);
+    this.setAuthenticatedUserFirstName(apiResponse.first_name);
+    this.setAuthenticatedUserLastName(apiResponse.last_name);
+    this.setAuthenticatedUserImage(apiResponse.image);
   }
 
   _handleUnsuccessfullLogin(responseMessage: ReturnHandleResponse) {

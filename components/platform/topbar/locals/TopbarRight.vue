@@ -17,20 +17,22 @@
       <MenuButton
         class="-m-1.5 flex items-center p-1.5 hover:text-gray-500 dark:hover:text-slate-200"
       >
-      <Observer>
-        <span class="sr-only">Open user menu</span>
-        <img
-          class="h-8 w-8 rounded-full p-px bg-gray-50"
-          :src="userService.authenticatedUserImage!"
-          alt=""
-        />
-        <span class="hidden lg:flex lg:items-center">
-          <span class="ml-4 text-sm font-semibold leading-6" aria-hidden="true"
-            >{{ userService.getAuthenticatedUserFullName() }}</span
-          >
-          <ChevronDownIcon class="ml-2 h-5 w-5" aria-hidden="true" />
-        </span>
-      </Observer>
+        <Observer>
+          <span class="sr-only">Open user menu</span>
+          <img
+            class="h-8 w-8 rounded-full p-px bg-gray-50"
+            :src="userService.authenticatedUserImage!"
+            alt=""
+          />
+          <span class="hidden lg:flex lg:items-center">
+            <span
+              class="ml-4 text-sm font-semibold leading-6"
+              aria-hidden="true"
+              >{{ userService.getAuthenticatedUserFullName() }}</span
+            >
+            <ChevronDownIcon class="ml-2 h-5 w-5" aria-hidden="true" />
+          </span>
+        </Observer>
       </MenuButton>
       <transition
         enter-active-class="transition ease-out duration-100"
