@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts" setup>
-import { object, string } from "yup";
+import { object, string, mixed } from "yup";
 import { useForm, useField } from "vee-validate";
 import { themeButtonService } from "~/services/theme/ThemeButtonService";
 import { userService } from "~/services/user/UserService";
@@ -61,6 +61,20 @@ const schema = object().shape({
   last_name: string().required(() =>
     t("global.messages.field_last_name_required")
   ),
+  file: mixed()
+    .required(() => t("global.messages.field_last_name_required"))
+    // Check this first, since this is a 'cheap' test
+    .test("is-valid-type", "Not a valid image type", (value) =>
+      checkFileExtension(value)
+    )
+    .test("is-valid-size", "File too big, max size: 10MB", (value) =>
+      checkFileSize(value)
+    )
+    .test(
+      "is-valid-mime-type",
+      "Not a valid MIME type",
+      async (value) => await checkFileMimeType(value)
+    ),
 });
 
 const { handleSubmit, setErrors, setValues } = useForm({

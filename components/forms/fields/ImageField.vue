@@ -7,22 +7,23 @@
         class="h-24 w-24 flex-none rounded-lg bg-white object-cover"
       />
       <div>
-        <Field name="image" type="file">
+        <Field name="file" type="file">
           <button
             type="button"
             class="rounded-md bg-white/10 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-white/20"
           >
-            <label for="image"> Change Image </label>
+            <label for="file"> Change Image </label>
           </button>
           <input
-            id="image"
+            id="file"
             style="visibility: hidden"
             type="file"
+            accept="image/jpeg,image/png,image/gif"
             @change="onChange"
           />
         </Field>
         <ErrorMessage
-          name="image"
+          name="file"
           as="p"
           class="dark:text-pink-200 text-pink-400"
         />

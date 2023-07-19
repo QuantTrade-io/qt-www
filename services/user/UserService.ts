@@ -233,20 +233,27 @@ class UserService implements IUserService {
 
   _handleSuccessfullAccessTokenLogin(
     apiResponse: any,
-    message: ReturnHandleResponse
+    redirect: boolean,
+    message?: ReturnHandleResponse
   ) {
-    toastMessageService.addToast(
-      new ToastMessage({
-        id: Math.random(),
-        title: message.title,
-        message: message.message,
-        status: message.status,
-      })
-    );
+    if (message) {
+      toastMessageService.addToast(
+        new ToastMessage({
+          id: Math.random(),
+          title: message.title,
+          message: message.message,
+          status: message.status,
+        })
+      );
+    }
     this.setLoggedInUserAccessToken(apiResponse.access_token);
     this.setLoggedInUserAccountStatus(apiResponse.account_status);
     this.setLoggedInUserSubscribed(apiResponse.subscribed);
-    return this._redirectSuccessfullLogin(apiResponse.account_status);
+    this.setAuthenticatedUserImage(apiResponse.image);
+
+    if (redirect) {
+      return this._redirectSuccessfullLogin(apiResponse.account_status);
+    }
   }
 
   _redirectSuccessfullLogin(subscribed: boolean) {
