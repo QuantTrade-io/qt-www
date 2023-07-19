@@ -34,3 +34,5 @@ export interface ParamsPatchAuthenticatedUserApi extends ParamsBaseApi {
   // Since this request could contain an image
   body: FormData;
 }
+
+export interface ParamsDeleteAuthenticatedUserApi extends ParamsBaseApi {}

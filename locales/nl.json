@@ -320,6 +320,10 @@
       "platform": "Platform",
       "stripe_portal": "Open betaal portaal",
       "stripe_portal_loading": "Betaal portaal laden"
+    },
+    "settings": {
+      "delete_account": "Ja, verwijder account",
+      "deleting_account": "Account verwijderen"
     }
   }
 }
