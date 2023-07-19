@@ -23,9 +23,14 @@ export interface ParamsUserLoginApi extends ParamsBaseApi {
   };
 }
 
-export interface ParamsAuthenticatedUserSettingsApi extends ParamsBaseApi {
+export interface ParamsPatchAuthenticatedUserSettingsApi extends ParamsBaseApi {
   body: {
     password_old: string;
     password_new: string;
   };
+}
+
+export interface ParamsPatchAuthenticatedUserApi extends ParamsBaseApi {
+  // Since this request could contain an image
+  body: FormData;
 }

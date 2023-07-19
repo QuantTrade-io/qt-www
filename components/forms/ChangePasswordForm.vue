@@ -79,7 +79,7 @@ const { handleSubmit, setErrors } = useForm({
 
 const onSubmit = handleSubmit(async (values) => {
   submitInProgress.value = true;
-  const response = await userService.authenticatedUserSettings({
+  const response = await userService.patchAuthenticatedUserSettings({
     locale: localeProperties.value.iso!,
     body: {
       password_old: values.password_old,

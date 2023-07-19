@@ -17,18 +17,22 @@
       <MenuButton
         class="-m-1.5 flex items-center p-1.5 hover:text-gray-500 dark:hover:text-slate-200"
       >
-        <span class="sr-only">Open user menu</span>
-        <img
-          class="h-8 w-8 rounded-full bg-gray-50"
-          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-          alt=""
-        />
-        <span class="hidden lg:flex lg:items-center">
-          <span class="ml-4 text-sm font-semibold leading-6" aria-hidden="true"
-            >Tom Cook</span
-          >
-          <ChevronDownIcon class="ml-2 h-5 w-5" aria-hidden="true" />
-        </span>
+        <Observer>
+          <span class="sr-only">Open user menu</span>
+          <img
+            class="h-8 w-8 rounded-full p-px bg-gray-50"
+            :src="userService.authenticatedUserImage!"
+            alt=""
+          />
+          <span class="hidden lg:flex lg:items-center">
+            <span
+              class="ml-4 text-sm font-semibold leading-6"
+              aria-hidden="true"
+              >{{ userService.getAuthenticatedUserFullName() }}</span
+            >
+            <ChevronDownIcon class="ml-2 h-5 w-5" aria-hidden="true" />
+          </span>
+        </Observer>
       </MenuButton>
       <transition
         enter-active-class="transition ease-out duration-100"
@@ -73,6 +77,7 @@
 </template>
 
 <script setup lang="ts">
+import { Observer } from "mobx-vue-lite";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import {
   BellIcon,
