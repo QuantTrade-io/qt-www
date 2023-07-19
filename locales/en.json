@@ -320,6 +320,10 @@
       "platform": "Platform",
       "stripe_portal": "Open billing Portal",
       "stripe_portal_loading": "Loading billing Portal"
+    },
+    "settings": {
+      "delete_account": "Yes, delete account",
+      "deleting_account": "Deleting account"
     }
   }
 }

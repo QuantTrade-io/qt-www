@@ -16,6 +16,7 @@ import {
   ParamsUserRegisterApi,
   ParamsUserVerifyEmailApi,
   ParamsPatchAuthenticatedUserApi,
+  ParamsDeleteAuthenticatedUserApi,
   ParamsPatchAuthenticatedUserSettingsApi,
 } from "./TypesUserService";
 import { EAccountStatus } from "./EUserService";
@@ -198,6 +199,20 @@ class UserService implements IUserService {
       accessToken: true,
       refreshToken: true,
       body: data.body,
+    });
+  }
+
+  async deleteAuthenticatedUser(
+    data: ParamsDeleteAuthenticatedUserApi
+  ): TypePromiseApiResponse {
+    const fetch = useCustomFetch();
+
+    return await fetch.request({
+      url: UserService.AUTHENTICATED_USER_URL,
+      method: "DELETE",
+      locale: data.locale,
+      accessToken: true,
+      refreshToken: true,
     });
   }
 
