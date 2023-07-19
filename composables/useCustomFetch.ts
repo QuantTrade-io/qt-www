@@ -66,15 +66,7 @@ const useCustomFetch = () => {
           return refreshUserTokenResponse;
         }
         if (refreshUserTokenResponse.data.value) {
-          userService.setLoggedInUserAccessToken(
-            refreshUserTokenResponse.data.value.access_token
-          );
-          userService.setLoggedInUserAccountStatus(
-            refreshUserTokenResponse.data.value.account_status
-          );
-          userService.setAuthenticatedUserImage(
-            refreshUserTokenResponse.data.value.image
-          );
+          userService._handleSuccessfullAccessTokenLogin(refreshUserTokenResponse.data.value, false)
         }
         accessToken = true;
 
