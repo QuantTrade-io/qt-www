@@ -254,7 +254,6 @@ class UserService implements IUserService {
     if (redirect) {
       return this._redirectSuccessfullLogin(apiResponse.account_status);
     }
-    return;
   }
 
   _redirectSuccessfullLogin(subscribed: boolean) {
