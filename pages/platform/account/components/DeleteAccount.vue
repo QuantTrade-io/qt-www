@@ -1,5 +1,5 @@
 <template>
-      <div
+  <div
     class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
   >
     <div>
@@ -8,8 +8,8 @@
       </h2>
       <p class="mt-1 text-sm leading-6 text-slate-400">
         No longer want to use our service? You can delete your account here.
-        This action is not reversible. All information related to this
-        account will be deleted permanently.
+        This action is not reversible. All information related to this account
+        will be deleted permanently.
       </p>
     </div>
 
@@ -28,38 +28,36 @@
       </div>
     </div>
   </div>
-  </template>
-  
-  <script lang="ts" setup>
-  import { userService } from "~/services/user/UserService";
-  import { apiResponseHandlerService } from "~/services/response/ApiResponseHandlerService";
-  import { toastMessageService } from "~/services/response/ToastMessageService";
-  import { ToastMessage } from "~/models/response/ToastMessage";
-  import { EApiResponseStatus } from "~/services/response/EApiResponseHandler";
-  import { modalMessageService } from "~/services/response/ModalMessageService";
-  
-  const { t } = useI18n();
-  
-  const { localeProperties } = useI18n();
-  
-  definePageMeta({
-    layout: "auth",
+</template>
+
+<script lang="ts" setup>
+import { userService } from "~/services/user/UserService";
+import { apiResponseHandlerService } from "~/services/response/ApiResponseHandlerService";
+import { toastMessageService } from "~/services/response/ToastMessageService";
+import { ToastMessage } from "~/models/response/ToastMessage";
+import { EApiResponseStatus } from "~/services/response/EApiResponseHandler";
+import { modalMessageService } from "~/services/response/ModalMessageService";
+
+const { localeProperties } = useI18n();
+
+definePageMeta({
+  layout: "auth",
+});
+
+const submitInProgress = ref(false);
+
+async function deleteAccount() {
+  submitInProgress.value = true;
+
+  const response = await userService.deleteAuthenticatedUser({
+    locale: localeProperties.value.iso!,
   });
-  
-  const submitInProgress = ref(false);
-  
-  async function deleteAccount() {
-    submitInProgress.value = true;
-  
-    const response = await userService.deleteAuthenticatedUser({
-      locale: localeProperties.value.iso!,
-    });
 
-    const message = apiResponseHandlerService.handleResponse(response);
+  const message = apiResponseHandlerService.handleResponse(response);
 
-    submitInProgress.value = false;
-  
-    if (message.status !== EApiResponseStatus.success) {
+  submitInProgress.value = false;
+
+  if (message.status !== EApiResponseStatus.success) {
     toastMessageService.addToast(
       new ToastMessage({
         id: Math.random(),
@@ -95,8 +93,7 @@
       path: localePath("/auth/login"),
     });
   }, 5000);
-  };
+}
 
-  const localePath = useLocalePath();
-  </script>
-  
+const localePath = useLocalePath();
+</script>
