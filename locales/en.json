@@ -313,6 +313,13 @@
     "subscribing": "Subscribing",
     "keep_me_posted": "Keep me posted"
   },
+  "reset_password": {
+    "request_password_reset": "Request password reset",
+    "request": "Reset Password",
+    "requesting": "Resetting Password",
+    "reset_password": "Reset Password",
+    "enter_new_password": "Enter new password"
+  },
   "platform": {
     "billing": {
       "hero_leading_text": "Finish Registration",
