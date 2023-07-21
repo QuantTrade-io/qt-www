@@ -26,14 +26,14 @@ export interface ParamsUserLoginApi extends ParamsBaseApi {
 export interface ParamsRequestPasswordResetApi extends ParamsBaseApi {
   body: {
     email: string;
-  }
+  };
 }
 
 export interface ParamsVerifyPasswordResetApi extends ParamsBaseApi {
   body: {
     token: string;
     password: string;
-  }
+  };
 }
 
 export interface ParamsPatchAuthenticatedUserSettingsApi extends ParamsBaseApi {
