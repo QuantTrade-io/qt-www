@@ -313,6 +313,13 @@
     "subscribing": "Aanmelden",
     "keep_me_posted": "Hou me op de hoogte"
   },
+  "reset_password": {
+    "request_password_reset": "Wachtwoord herstellen aanvragen",
+    "request": "Wachtwoord herstellen",
+    "requesting": "Aanvragen",
+    "reset_password": "Herstel Password",
+    "enter_new_password": "Nieuw wachtwoord invullen"
+  },
   "platform": {
     "billing": {
       "hero_leading_text": "Registratie afronden",
