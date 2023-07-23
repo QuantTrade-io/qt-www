@@ -31,10 +31,10 @@ export interface ParamsRequestPasswordResetApi extends ParamsBaseApi {
 
 export interface ParamsRequestEmailResetApi extends ParamsBaseApi {}
 
-export interface ParamsRequestEmailVerifyApi extends ParamsBaseApi{
+export interface ParamsRequestEmailVerifyApi extends ParamsBaseApi {
   body: {
     email: string;
-  };  
+  };
 }
 
 export interface ParamsVerifyEmailResetApi extends ParamsBaseApi {

@@ -322,11 +322,11 @@
     "reset_password": "Herstel Password",
     "enter_new_password": "Nieuw wachtwoord invullen"
   },
-    "reset_email": {
+  "reset_email": {
     "reset_email": "Verander Email",
     "resetting_email": "Email veranderen"
   },
-    "request_verify_email": {
+  "request_verify_email": {
     "request_verify_email": "Nieuwe e-mailadres verificatie email",
     "request": "Stuur email",
     "requesting": "Email versturen"
