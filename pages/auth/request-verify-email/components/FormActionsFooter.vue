@@ -13,12 +13,12 @@
     </div>
 
     <div class="flex flex-col gap-2 mt-4">
-      <NuxtLink :to="localePath('/auth/reset-password')">
+      <NuxtLink :to="localePath('/auth/register')">
         <BaseButton
           :button-theme="themeButtonService.getThemeButtonById(7)"
           class="font-bold"
         >
-          {{ $t("register.reset_password") }}
+          {{ $t("register.register") }}
         </BaseButton>
       </NuxtLink>
     </div>

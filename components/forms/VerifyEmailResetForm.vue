@@ -1,7 +1,8 @@
 <template>
   <div>
     <form class="space-y-4" @submit.prevent="onSubmit">
-      <PasswordField />
+      <EmailField label="global.fields.email_address_old" name="email_old" />
+      <EmailField label="global.fields.email_address_new" name="email_new" />
       <BaseButton
         :button-theme="themeButtonService.getThemeButtonById(6)"
         :disabled="submitInProgress"
@@ -9,8 +10,8 @@
       >
         <BaseSpinnerSmall
           :submit-in-progress="submitInProgress"
-          spinner-text="reset_password.requesting"
-          button-text="reset_password.reset_password"
+          spinner-text="reset_email.resetting_email"
+          button-text="reset_email.reset_email"
         />
       </BaseButton>
     </form>
@@ -23,7 +24,7 @@ import { useForm } from "vee-validate";
 import { themeButtonService } from "~/services/theme/ThemeButtonService";
 import { userService } from "~/services/user/UserService";
 import { apiResponseHandlerService } from "~/services/response/ApiResponseHandlerService";
-import PasswordField from "~/components/forms/fields/PasswordField.vue";
+import EmailField from "~/components/forms/fields/EmailField.vue";
 import { modalMessageService } from "~/services/response/ModalMessageService";
 import { EApiResponseStatus } from "~/services/response/EApiResponseHandler";
 
@@ -68,9 +69,12 @@ onBeforeMount(() => {
 const submitInProgress = ref(false);
 
 const schema = object().shape({
-  password: string()
-    .required(() => t("global.messages.field_password_required"))
-    .min(10, () => t("global.messages.field_password_too_short")),
+  email_old: string()
+    .required(() => t("global.messages.field_email_required"))
+    .email(() => t("global.messages.field_email_invalid")),
+  email_new: string()
+    .required(() => t("global.messages.field_email_required"))
+    .email(() => t("global.messages.field_email_invalid")),
 });
 
 const { handleSubmit, setErrors, resetForm } = useForm({
@@ -79,11 +83,12 @@ const { handleSubmit, setErrors, resetForm } = useForm({
 
 const onSubmit = handleSubmit(async (values) => {
   submitInProgress.value = true;
-  const response = await userService.userVerifyPasswordReset({
+  const response = await userService.userVerifyEmailReset({
     locale: localeProperties.value.iso!,
     body: {
       token: urlToken,
-      password: values.password,
+      email_old: values.email_old,
+      email_new: values.email_new,
     },
   });
   submitInProgress.value = false;
@@ -103,9 +108,9 @@ const onSubmit = handleSubmit(async (values) => {
       buttons: [
         {
           id: 1,
-          to: "/auth/reset-password",
+          to: "/auth/register",
           themeId: 8,
-          label: "Reset Password",
+          label: "Register",
         },
         {
           id: 2,

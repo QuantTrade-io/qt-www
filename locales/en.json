@@ -56,6 +56,8 @@
     },
     "fields": {
       "email_address": "Email address",
+      "email_address_old": "Current email address",
+      "email_address_new": "New email address",
       "first_name": "Fist Name",
       "last_name": "Last Name",
       "password": "Password",
@@ -320,6 +322,15 @@
     "reset_password": "Reset Password",
     "enter_new_password": "Enter new password"
   },
+  "reset_email": {
+    "reset_email": "Change Email",
+    "resetting_email": "Changing Email"
+  },
+  "request_verify_email": {
+    "request_verify_email": "Request new verify email",
+    "request": "Request new Email",
+    "requesting": "Sending Email"
+  },
   "platform": {
     "billing": {
       "hero_leading_text": "Finish Registration",
@@ -330,7 +341,9 @@
     },
     "settings": {
       "delete_account": "Yes, delete account",
-      "deleting_account": "Deleting account"
+      "deleting_account": "Deleting account",
+      "change_email_request": "Change Email",
+      "change_email_sending": "Sending Email"
     }
   }
 }

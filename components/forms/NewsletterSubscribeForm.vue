@@ -1,7 +1,7 @@
 <template>
   <div class="mt-6">
     <form class="space-y-6" @submit.prevent="onSubmit">
-      <EmailField />
+      <EmailField label="global.fields.email_address" name="email" />
       <div>
         <BaseButton
           :button-theme="themeButtonService.getThemeButtonById(6)"

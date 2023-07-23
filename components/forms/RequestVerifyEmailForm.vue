@@ -9,8 +9,8 @@
       >
         <BaseSpinnerSmall
           :submit-in-progress="submitInProgress"
-          spinner-text="reset_password.requesting"
-          button-text="reset_password.request"
+          spinner-text="request_verify_email.requesting"
+          button-text="request_verify_email.request"
         />
       </BaseButton>
     </form>
@@ -49,7 +49,7 @@ const { handleSubmit, setErrors, resetForm } = useForm({
 
 const onSubmit = handleSubmit(async (values) => {
   submitInProgress.value = true;
-  const response = await userService.userRequestPasswordReset({
+  const response = await userService.userRequestEmailVerify({
     locale: localeProperties.value.iso!,
     body: {
       email: values.email,
