@@ -42,6 +42,7 @@
       </div>
       <PersonalInformationForm />
       <ChangePasswordForm />
+      <RequestChangeEmail />
       <BillingPortalSession />
       <div
         class="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
@@ -97,6 +98,7 @@
 import { Observer } from "mobx-vue-lite";
 import BillingPortalSession from "./components/BillingPortalSession.vue";
 import DeleteAccount from "./components/DeleteAccount.vue";
+import RequestChangeEmail from "./components/RequestChangeEmail.vue";
 import ChangePasswordForm from "~/components/forms/ChangePasswordForm.vue";
 import PersonalInformationForm from "~/components/forms/PersonalInformationForm.vue";
 import { themeColorService } from "~/services/theme/ThemeColorService";

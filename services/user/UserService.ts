@@ -17,9 +17,12 @@ import {
   ParamsUserVerifyEmailApi,
   ParamsPatchAuthenticatedUserApi,
   ParamsRequestPasswordResetApi,
+  ParamsRequestEmailResetApi,
+  ParamsRequestEmailVerifyApi,
   ParamsDeleteAuthenticatedUserApi,
   ParamsPatchAuthenticatedUserSettingsApi,
   ParamsVerifyPasswordResetApi,
+  ParamsVerifyEmailResetApi,
 } from "./TypesUserService";
 import { EAccountStatus } from "./EUserService";
 import { IUserService } from "./IUserService";
@@ -39,9 +42,12 @@ class UserService implements IUserService {
   static USER_REGISTER_URL = `/v1/auth/user-register/`;
   static USER_LOGIN_URL = `/v1/auth/user-login/`;
   static USER_VERIFY_EMAIL_URL = `/v1/auth/user-register/verify-email/`;
+  static USER_REQUEST_EMAIL_VERIFY = `/v1/auth/user-register/request-verify-email/`;
   static USER_LOGIN_REFRESH_TOKEN_URL = `/v1/auth/refresh-token/`;
   static USER_REQUEST_PASSWORD_RESET = `/v1/auth/reset/password/`;
   static USER_VERIFY_PASSWORD_RESET = `/v1/auth/verify/reset-password/`;
+  static USER_REQUEST_EMAIL_RESET = `/v1/auth/reset/email/`;
+  static USER_VERIFY_EMAIL_RESET = `/v1/auth/verify/reset-email/`;
 
   static AUTHENTICATED_USER_URL = `/v1/auth/user/`;
   static AUTHENTICATED_USER_SETTINGS_URL = `/v1/auth/user/settings/`;
@@ -203,6 +209,50 @@ class UserService implements IUserService {
     return await fetch.request({
       url: UserService.USER_VERIFY_PASSWORD_RESET,
       method: "PUT",
+      locale: data.locale,
+      accessToken: false,
+      refreshToken: false,
+      body: data.body,
+    });
+  }
+
+  async userRequestEmailReset(
+    data: ParamsRequestEmailResetApi
+  ): TypePromiseApiResponse {
+    const fetch = useCustomFetch();
+
+    return await fetch.request({
+      url: UserService.USER_REQUEST_EMAIL_RESET,
+      method: "POST",
+      locale: data.locale,
+      accessToken: true,
+      refreshToken: true,
+    });
+  }
+
+  async userVerifyEmailReset(
+    data: ParamsVerifyEmailResetApi
+  ): TypePromiseApiResponse {
+    const fetch = useCustomFetch();
+
+    return await fetch.request({
+      url: UserService.USER_VERIFY_EMAIL_RESET,
+      method: "PUT",
+      locale: data.locale,
+      accessToken: false,
+      refreshToken: false,
+      body: data.body,
+    });
+  }
+
+  async userRequestEmailVerify(
+    data: ParamsRequestEmailVerifyApi
+  ): TypePromiseApiResponse {
+    const fetch = useCustomFetch();
+
+    return await fetch.request({
+      url: UserService.USER_REQUEST_EMAIL_VERIFY,
+      method: "POST",
       locale: data.locale,
       accessToken: false,
       refreshToken: false,

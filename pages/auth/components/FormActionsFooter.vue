@@ -21,14 +21,6 @@
           {{ $t("register.reset_password") }}
         </BaseButton>
       </NuxtLink>
-      <NuxtLink :to="localePath('/auth/reset-email')">
-        <BaseButton
-          :button-theme="themeButtonService.getThemeButtonById(7)"
-          class="font-bold"
-        >
-          {{ $t("register.reset_email") }}
-        </BaseButton>
-      </NuxtLink>
     </div>
   </div>
 </template>

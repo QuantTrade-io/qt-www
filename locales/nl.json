@@ -56,6 +56,8 @@
     },
     "fields": {
       "email_address": "E-mailadres",
+      "email_address_old": "Huidog e-mailadres",
+      "email_address_new": "Nieuw e-mailadres",
       "first_name": "Voornaam",
       "last_name": "Achternaam",
       "password": "Wachtwoord",
@@ -320,6 +322,15 @@
     "reset_password": "Herstel Password",
     "enter_new_password": "Nieuw wachtwoord invullen"
   },
+    "reset_email": {
+    "reset_email": "Verander Email",
+    "resetting_email": "Email veranderen"
+  },
+    "request_verify_email": {
+    "request_verify_email": "Nieuwe e-mailadres verificatie email",
+    "request": "Stuur email",
+    "requesting": "Email versturen"
+  },
   "platform": {
     "billing": {
       "hero_leading_text": "Registratie afronden",
@@ -330,7 +341,9 @@
     },
     "settings": {
       "delete_account": "Ja, verwijder account",
-      "deleting_account": "Account verwijderen"
+      "deleting_account": "Account verwijderen",
+      "change_email_request": "Change Email",
+      "change_email_sending": "Sending Email"
     }
   }
 }

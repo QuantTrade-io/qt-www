@@ -91,9 +91,9 @@ onBeforeMount(async () => {
         },
         {
           id: 2,
-          to: "/home",
+          to: "/auth/request-verify-email",
           themeId: 5,
-          label: "Home",
+          label: "New verification email",
         },
       ],
     });

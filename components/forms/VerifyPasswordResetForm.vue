@@ -103,9 +103,9 @@ const onSubmit = handleSubmit(async (values) => {
       buttons: [
         {
           id: 1,
-          to: "/auth/register",
+          to: "/auth/reset-password",
           themeId: 8,
-          label: "Register",
+          label: "Reset Password",
         },
         {
           id: 2,

@@ -29,6 +29,22 @@ export interface ParamsRequestPasswordResetApi extends ParamsBaseApi {
   };
 }
 
+export interface ParamsRequestEmailResetApi extends ParamsBaseApi {}
+
+export interface ParamsRequestEmailVerifyApi extends ParamsBaseApi{
+  body: {
+    email: string;
+  };  
+}
+
+export interface ParamsVerifyEmailResetApi extends ParamsBaseApi {
+  body: {
+    token: string;
+    email_old: string;
+    email_new: string;
+  };
+}
+
 export interface ParamsVerifyPasswordResetApi extends ParamsBaseApi {
   body: {
     token: string;
