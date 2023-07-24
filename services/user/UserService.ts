@@ -13,6 +13,7 @@ import { modalMessageService } from "../response/ModalMessageService";
 import { toastMessageService } from "../response/ToastMessageService";
 import {
   ParamsUserLoginApi,
+  ParamsUserLogoutApi,
   ParamsUserRegisterApi,
   ParamsUserVerifyEmailApi,
   ParamsPatchAuthenticatedUserApi,
@@ -41,6 +42,7 @@ class UserService implements IUserService {
    */
   static USER_REGISTER_URL = `/v1/auth/user-register/`;
   static USER_LOGIN_URL = `/v1/auth/user-login/`;
+  static USER_LOGOUT_URL = `/v1/auth/user-logout/`;
   static USER_VERIFY_EMAIL_URL = `/v1/auth/user-register/verify-email/`;
   static USER_REQUEST_EMAIL_VERIFY = `/v1/auth/user-register/request-verify-email/`;
   static USER_LOGIN_REFRESH_TOKEN_URL = `/v1/auth/refresh-token/`;
@@ -135,10 +137,6 @@ class UserService implements IUserService {
     return `${this.authenticatedUserFirstName} ${this.authenticatedUserLastName}`;
   }
 
-  async logout() {
-    await this.clearStoredDate();
-  }
-
   async userRegister(data: ParamsUserRegisterApi): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
@@ -184,6 +182,27 @@ class UserService implements IUserService {
         refresh_token: this.loggedInUserRefreshToken,
       },
     });
+  }
+
+  async userLogout(data: ParamsUserLogoutApi): TypePromiseApiResponse {
+    const fetch = useCustomFetch();
+
+    // logout server side
+    const response = await fetch.request({
+      url: UserService.USER_LOGOUT_URL,
+      method: "POST",
+      locale: data.locale,
+      accessToken: true,
+      refreshToken: true,
+      body: {
+        refresh_token: this.loggedInUserRefreshToken,
+      },
+    });
+
+    // logout client side
+    await this.clearStoredData();
+
+    return response;
   }
 
   async userRequestPasswordReset(
@@ -375,7 +394,8 @@ class UserService implements IUserService {
   }
 
   _handleUnsuccessfullLogin(responseMessage: ReturnHandleResponse) {
-    this.logout();
+    this.clearStoredData();
+
     const [buttons, message] = this._errorResponseMessages(
       responseMessage.message
     );
@@ -413,9 +433,9 @@ class UserService implements IUserService {
           [
             {
               id: 1,
-              to: "/home",
+              to: "/auth/login",
               themeId: 7,
-              label: "Home",
+              label: "Login",
             },
             {
               id: 2,
@@ -428,7 +448,7 @@ class UserService implements IUserService {
     }
   }
 
-  async clearStoredDate() {
+  async clearStoredData() {
     await clearPersistedStore(this);
   }
 }

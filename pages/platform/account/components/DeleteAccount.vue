@@ -69,7 +69,9 @@ async function deleteAccount() {
     return;
   }
   // Log-out current session (rest is done server side)
-  await userService.logout();
+  await userService.userLogout({
+    locale: localeProperties.value.iso!,
+  });
 
   // Notify user about success
   modalMessageService.addModal({
