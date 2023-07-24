@@ -88,8 +88,12 @@ import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 
 import { userService } from "~/services/user/UserService";
 
+const { localeProperties } = useI18n();
+
 async function userLogout() {
-  await userService.logout();
+  await userService.userLogout({
+    locale: localeProperties.value.iso!,
+  });
   // Refresh page in order to make sure that all the tokens are removed
   window.location.reload();
   navigateTo({

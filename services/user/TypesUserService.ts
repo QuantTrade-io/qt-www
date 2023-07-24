@@ -23,6 +23,8 @@ export interface ParamsUserLoginApi extends ParamsBaseApi {
   };
 }
 
+export interface ParamsUserLogoutApi extends ParamsBaseApi {}
+
 export interface ParamsRequestPasswordResetApi extends ParamsBaseApi {
   body: {
     email: string;
