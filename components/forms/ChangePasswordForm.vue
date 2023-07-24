@@ -103,7 +103,7 @@ const onSubmit = handleSubmit(async (values) => {
     );
     return;
   }
-  
+
   // Log-out current session (rest is done server side)
   await userService.userLogout({
     locale: localeProperties.value.iso!,

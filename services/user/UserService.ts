@@ -188,21 +188,21 @@ class UserService implements IUserService {
     const fetch = useCustomFetch();
 
     // logout server side
-    const response =  await fetch.request({
+    const response = await fetch.request({
       url: UserService.USER_LOGOUT_URL,
       method: "POST",
       locale: data.locale,
       accessToken: true,
       refreshToken: true,
       body: {
-        "refresh_token": this.loggedInUserRefreshToken,
-      }
+        refresh_token: this.loggedInUserRefreshToken,
+      },
     });
 
     // logout client side
-    await this.clearStoredData()
+    await this.clearStoredData();
 
-    return response
+    return response;
   }
 
   async userRequestPasswordReset(
@@ -394,7 +394,7 @@ class UserService implements IUserService {
   }
 
   _handleUnsuccessfullLogin(responseMessage: ReturnHandleResponse) {
-    this.clearStoredData()
+    this.clearStoredData();
 
     const [buttons, message] = this._errorResponseMessages(
       responseMessage.message
