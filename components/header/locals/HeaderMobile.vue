@@ -18,9 +18,8 @@
 </template>
 
 <script setup lang="ts">
+import { PropsHeaderLink } from "../../types/PropsHeaderLink";
 import HeaderMobileLogo from "./HeaderMobileLogo.vue";
-
-import { PropsHeaderLink } from "~/types/PropsHeaderLink";
 import { themeButtonService } from "~/services/theme/ThemeButtonService";
 
 const localePath = useLocalePath();

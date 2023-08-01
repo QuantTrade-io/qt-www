@@ -88,7 +88,7 @@
                   </li>
                   <li>
                     <div class="text-xs font-semibold leading-6 text-gray-400">
-                      Favourites
+                      {{ $t("platform.sidebar.favourites") }}
                     </div>
                     <ul role="list" class="-mx-2 mt-2 space-y-1">
                       <!-- Favourite items -->
@@ -110,7 +110,7 @@
                     <div
                       class="text-xs font-semibold leading-6 text-slate-700 dark:text-slate-300"
                     >
-                      Settings
+                      {{ $t("platform.sidebar.settings") }}
                     </div>
                     <ul role="list" class="mt-4 space-y-1 flex items-center">
                       <!-- TradingMode Toggle -->
