@@ -110,7 +110,7 @@
                     <div
                       class="text-xs font-semibold leading-6 text-slate-700 dark:text-slate-300"
                     >
-                    {{ $t("platform.sidebar.settings") }}
+                      {{ $t("platform.sidebar.settings") }}
                     </div>
                     <ul role="list" class="mt-4 space-y-1 flex items-center">
                       <!-- TradingMode Toggle -->
