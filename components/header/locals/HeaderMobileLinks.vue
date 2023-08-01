@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropsHeaderLink } from "~/types/PropsHeaderLink";
+import { PropsHeaderLink } from "../../types/PropsHeaderLink";
 
 const localePath = useLocalePath();
 

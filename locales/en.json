@@ -64,13 +64,15 @@
       "password_old": "Current Password",
       "password_new": "New Password",
       "accepts_terms": "Accepts Terms & conditions",
-      "download_terms": "Download Terms & Conditions"
+      "download_terms": "Download Terms & Conditions",
+      "change_image": "Change Image",
+      "image_size": "JPG, GIF or PNG. 10MB max."
     }
   },
   "home": {
     "home": "Home",
     "hero_leading_text": "World leader in cross-platform stocks, currencies en crypto's trading",
-    "hero_helper_text": "Having multiple acccounts accross different brokers, can be hard to manage. We deliver a single platform for running and managin your quantitative trading strategies on those acccounts, accross different brokers.",
+    "hero_helper_text": "Single platform for running and managing your quantitative trading strategies, accross different brokers.",
     "brokers_connected": "Connected with Worlds most famous trading platforms.",
     "newsletter_leading_text": "Subscribe to our newsletter",
     "newsletter_helper_text": "Sharing updates, new features, bug fixes, ideas and knowledge with you",
@@ -266,6 +268,7 @@
     "hero_helper_text": "Pick the plan that suits you best, cancel at any time.",
     "buy_plan": "Pick this plan",
     "buying_plan": "Create checkout",
+    "payment_interval": "Payment Interval",
     "tier_trader": {
       "name": "Trader",
       "backtesting": "Backtester",
@@ -333,7 +336,8 @@
   },
   "platform": {
     "sidebar": {
-      "favourites": "Favourites"
+      "favourites": "Favourites",
+      "settings": "Settings"
     },
     "topbar": {
       "settings": "Settings",

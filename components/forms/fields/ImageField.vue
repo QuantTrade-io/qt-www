@@ -13,7 +13,7 @@
             class="font-bold"
             type="button"
           >
-            <label for="file"> Change Image </label>
+            <label for="file">{{ $t("global.fields.change_image") }}</label>
           </BaseButton>
           <input
             id="file"
@@ -29,7 +29,7 @@
           class="dark:text-pink-200 text-pink-400"
         />
         <p class="mt-2 text-xs leading-5 text-slate-400">
-          JPG, GIF or PNG. 10MB max.
+          {{ $t("global.fields.image_size") }}
         </p>
       </div>
     </div>
