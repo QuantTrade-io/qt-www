@@ -64,12 +64,14 @@
       "password_old": "Current Password",
       "password_new": "New Password",
       "accepts_terms": "Accepts Terms & conditions",
-      "download_terms": "Download Terms & Conditions"
+      "download_terms": "Download Terms & Conditions",
+      "change_image": "Change Image",
+      "image_size": "JPG, GIF or PNG. 10MB max."
     }
   },
   "home": {
     "home": "Home",
-    "hero_leading_text": "Unleash the Future of Trading: Seamlessly Trade Stocks, Currencies, and Cryptos Across Multiple Platforms.",
+    "hero_leading_text": "Unleash unlimited algorithmic Trading: Seamlessly Trade Stocks, Currencies, and Cryptos Across Multiple Platforms, without coding experience.",
     "hero_helper_text": "Welcome to the Future of Trading! Our single platform empowers you to effortlessly manage and execute your quantitative trading strategies across diverse brokers, enabling you to stay ahead in the ever-evolving markets.",
     "brokers_connected": "Connected with Worlds most famous trading platforms.",
     "newsletter_leading_text": "Subscribe to our newsletter",
@@ -266,6 +268,7 @@
     "hero_helper_text": "Pick the plan that suits you best, cancel at any time.",
     "buy_plan": "Pick this plan",
     "buying_plan": "Create checkout",
+    "payment_interval": "Payment Interval",
     "tier_trader": {
       "name": "Trader",
       "backtesting": "Backtester",
@@ -333,7 +336,8 @@
   },
   "platform": {
     "sidebar": {
-      "favourites": "Favourites"
+      "favourites": "Favourites",
+      "settings": "Settings"
     },
     "topbar": {
       "settings": "Settings",
