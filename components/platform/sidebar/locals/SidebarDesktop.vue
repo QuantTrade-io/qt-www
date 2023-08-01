@@ -1,7 +1,7 @@
 <template>
   <!-- Static sidebar for desktop -->
   <div
-    class="hidden xl:fixed xl:inset-y-0 xl:z-50 xl:flex xl:w-72 xl:flex-col bg-slate-100 dark:bg-gray-900 border-r border-slate-200"
+    class="hidden xl:fixed xl:inset-y-0 xl:z-50 xl:flex xl:w-72 xl:flex-col bg-slate-200 dark:bg-gray-900 border-r border-slate-400"
   >
     <!-- Logo -->
     <div
@@ -35,7 +35,7 @@
           <!-- Favourite items -->
           <li>
             <div class="text-xs font-semibold leading-6 text-gray-400">
-              Favourites
+              {{ $t("platform.sidebar.favourites") }}
             </div>
             <ul role="list" class="-mx-2 mt-2 space-y-1">
               <li v-for="favourite in favourites" :key="favourite.text">

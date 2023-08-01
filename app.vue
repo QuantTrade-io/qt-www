@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+  <div
+    class="bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300"
+  >
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

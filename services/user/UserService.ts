@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import makeAutoObservable from "mobx-store-inheritance";
 import {
   clearPersistedStore,
   isHydrated,
@@ -11,6 +11,7 @@ import {
 import { EApiResponseStatus } from "../response/EApiResponseHandler";
 import { modalMessageService } from "../response/ModalMessageService";
 import { toastMessageService } from "../response/ToastMessageService";
+import { BaseService } from "../base/BaseService";
 import {
   ParamsUserLoginApi,
   ParamsUserLogoutApi,
@@ -31,7 +32,7 @@ import { ModalMessage } from "~/models/response/ModalMessage";
 import { ToastMessage } from "~/models/response/ToastMessage";
 import { DataButtonInfo } from "~/models/response/DataModalMessage";
 
-class UserService implements IUserService {
+class UserService extends BaseService implements IUserService {
   /**
    * Class that holds all logic regarding the User (register, login, etc).
    *
@@ -66,6 +67,7 @@ class UserService implements IUserService {
   authenticatedUserDevices: any = null;
 
   constructor() {
+    super();
     makeAutoObservable(this, {}, { autoBind: true });
 
     makePersistable(this, {

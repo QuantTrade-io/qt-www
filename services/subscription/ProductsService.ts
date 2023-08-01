@@ -1,6 +1,7 @@
-import { computed, makeAutoObservable } from "mobx";
+import makeAutoObservable from "mobx-store-inheritance";
 import { ParamsBaseApi } from "../base/TypesBaseService";
 import { TypePromiseApiResponse } from "../response/TypesApiResponseHandler";
+import { BaseService } from "../base/BaseService";
 import { IProductsService } from "./IProductsService";
 import {
   ParamsGetStripeCheckoutApi,
@@ -10,7 +11,7 @@ import { Interval } from "~/models/subscription/Interval";
 import { Product } from "~/models/subscription/Product";
 import { TypeProduct } from "~/types/subscription/TypeProduct";
 
-export class ProductsService implements IProductsService {
+export class ProductsService extends BaseService implements IProductsService {
   /**
    * Class that holds all information regarding the Tiers, Pricing & Intervals of the application.
    *
@@ -20,7 +21,7 @@ export class ProductsService implements IProductsService {
    *
    */
   static PRODUCTS_URL = `/v1/billing/products/`;
-  static CREATE_STRIPE_CHECKOUT_SESSION = `/v1/billing/checkout-session/`;
+  static CREATE_STRIPE_CHECKOUT_SESSION = `/v1/billing/checkout-session/{priceId}`;
   static CREATE_STRIPE_BILLING_PORTAL = `/v1/billing/portal/`;
 
   products: Product[] = [];
@@ -30,16 +31,15 @@ export class ProductsService implements IProductsService {
   interval: Interval = this.intervals[0];
 
   constructor() {
+    super();
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
   async fetchProducts(data: ParamsBaseApi): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
-    const url = ProductsService.PRODUCTS_URL;
-
     return await fetch.request({
-      url,
+      url: ProductsService.PRODUCTS_URL,
       method: "GET",
       locale: data.locale,
     });
@@ -50,10 +50,11 @@ export class ProductsService implements IProductsService {
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
-    const url = `${ProductsService.CREATE_STRIPE_CHECKOUT_SESSION}${data.paramPriceId}/`;
-
     return await fetch.request({
-      url,
+      url: this.parseUrl({
+        template: ProductsService.CREATE_STRIPE_CHECKOUT_SESSION,
+        templateData: { priceId: data.paramPriceId },
+      }),
       method: "GET",
       locale: data.locale,
       accessToken: true,
@@ -64,10 +65,8 @@ export class ProductsService implements IProductsService {
   async getStripeBillingPortal(data: ParamsGetStripeBillingPortalApi) {
     const fetch = useCustomFetch();
 
-    const url = ProductsService.CREATE_STRIPE_BILLING_PORTAL;
-
     return await fetch.request({
-      url,
+      url: ProductsService.CREATE_STRIPE_BILLING_PORTAL,
       method: "GET",
       locale: data.locale,
       accessToken: true,
@@ -131,7 +130,6 @@ export class ProductsService implements IProductsService {
     return this.interval;
   }
 
-  @computed
   setInterval(interval: Interval): void {
     this.interval = interval;
   }

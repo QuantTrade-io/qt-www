@@ -60,10 +60,11 @@ export enum EButtonColor {
    *
    */
   transparent = "text-slate-700 hover:bg-slate-300 hover:text-slate-700 dark:text-slate-300 dark:hover:bg-slate-500",
-  border = "border-2 text-blue-700 border-blue-700 hover:text-pink-300 hover:border-pink-300",
+  border = "border-2 bg-white dark:bg-slate-800 text-blue-700 border-blue-700 hover:text-pink-300 hover:border-pink-300",
   white = "",
   black = "",
   pink = "bg-pink-700 hover:bg-pink-500 text-white dark:bg-pink-700 dark:hover:bg-pink-900 dark:text-slate-100",
   mblue = "bg-blue-900 text-white hover:text-slate-100 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-900 focus-visible:outline-blue-700",
-  cblue = "",
+  cblue = "bg-blue-700 text-white hover:text-slate-100 hover:bg-blue-900 dark:bg-blue-900 dark:hover:bg-blue-700 focus-visible:outline-blue-700",
+  red = "bg-red-500 text-slate-700 dark:text-white font-medium hover:bg-red-400",
 }

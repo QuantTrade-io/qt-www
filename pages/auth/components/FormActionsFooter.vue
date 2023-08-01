@@ -6,7 +6,7 @@
       </div>
       <div class="relative flex justify-center text-sm font-medium leading-6">
         <span
-          class="bg-white dark:bg-slate-900 px-6 text-pink-400 dark:text-pink-200"
+          class="bg-slate-100 dark:bg-slate-900 px-6 text-pink-400 dark:text-pink-200"
           >{{ $t("global.util.or") }}</span
         >
       </div>

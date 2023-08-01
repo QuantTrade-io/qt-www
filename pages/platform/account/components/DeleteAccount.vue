@@ -4,12 +4,10 @@
   >
     <div>
       <h2 class="text-base font-semibold leading-7 dark:text-slate-200">
-        Delete account
+        {{ $t("platform.settings.delete_account_title") }}
       </h2>
       <p class="mt-1 text-sm leading-6 text-slate-400">
-        No longer want to use our service? You can delete your account here.
-        This action is not reversible. All information related to this account
-        will be deleted permanently.
+        {{ $t("platform.settings.delete_account_text") }}
       </p>
     </div>
 
