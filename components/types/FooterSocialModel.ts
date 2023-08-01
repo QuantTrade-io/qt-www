@@ -7,5 +7,18 @@ import {
 export interface FooterSocialModel {
   text: string;
   to: string;
-  icon: DefineComponent<{}, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, never[], never, PublicProps, Readonly<ExtractPropTypes<{}>> & {}, {}>;
+  icon: DefineComponent<
+    {},
+    {},
+    {},
+    {},
+    {},
+    ComponentOptionsMixin,
+    ComponentOptionsMixin,
+    never[],
+    never,
+    PublicProps,
+    Readonly<ExtractPropTypes<{}>> & {},
+    {}
+  >;
 }
