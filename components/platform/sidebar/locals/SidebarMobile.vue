@@ -15,7 +15,7 @@
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-slate-200 dark:bg-gray-900/80" />
+        <div class="fixed inset-0 bg-slate-100/70 dark:bg-gray-900/70" />
       </TransitionChild>
       <div class="fixed inset-0 flex">
         <TransitionChild
