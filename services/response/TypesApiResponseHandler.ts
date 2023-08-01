@@ -9,8 +9,13 @@ export type TypePromiseApiResponse = Promise<
 
 export interface ReturnHandleResponse {
   title: string;
-  message: any;
+  message: string;
   status: EApiResponseStatus;
   isUnhandled: boolean;
   isSuccess: boolean;
+}
+
+export interface ApiSuccessResponse {
+  message: string;
+  status: number;
 }

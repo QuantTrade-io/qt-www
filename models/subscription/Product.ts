@@ -36,7 +36,7 @@ export class Product extends BaseModel<Product> implements IProduct {
     return price!.amount / 100;
   }
 
-  getPriceIdForInterval(interval: string): string | number {
+  getPriceIdForInterval(interval: string): number | string {
     const price = this.prices.find((price) => price.interval === interval);
     return price!.id;
   }

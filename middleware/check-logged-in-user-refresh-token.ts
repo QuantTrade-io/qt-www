@@ -13,7 +13,7 @@ export default defineNuxtRouteMiddleware(async (_, __) => {
       return;
     }
     // Login successfully
-    return userService._handleSuccessfullAccessTokenLogin(
+    return userService._handleSuccessfullRefreshTokenLogin(
       response.data.value,
       true,
       message

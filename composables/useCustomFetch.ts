@@ -66,7 +66,7 @@ const useCustomFetch = () => {
           return refreshUserTokenResponse;
         }
         if (refreshUserTokenResponse.data.value) {
-          userService._handleSuccessfullAccessTokenLogin(
+          userService._handleSuccessfullRefreshTokenLogin(
             refreshUserTokenResponse.data.value,
             false
           );

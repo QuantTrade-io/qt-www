@@ -25,6 +25,10 @@ import {
   ParamsPatchAuthenticatedUserSettingsApi,
   ParamsVerifyPasswordResetApi,
   ParamsVerifyEmailResetApi,
+  UserTokens,
+  ApiResponseSuccessfullLogin,
+  ApiResponseSuccessfullRefreshTokenLogin,
+  ApiResponseAuthenticatedUser,
 } from "./TypesUserService";
 import { EAccountStatus } from "./EUserService";
 import { IUserService } from "./IUserService";
@@ -64,7 +68,6 @@ class UserService extends BaseService implements IUserService {
   authenticatedUserFirstName: string | null = null;
   authenticatedUserLastName: string | null = null;
   authenticatedUserImage: string | null = null;
-  authenticatedUserDevices: any = null;
 
   constructor() {
     super();
@@ -90,7 +93,7 @@ class UserService extends BaseService implements IUserService {
     return isHydrated(this);
   }
 
-  setLoggedInUserTokens(token: any) {
+  setLoggedInUserTokens(token: UserTokens) {
     this.loggedInUserAccessToken = token.access ?? null;
     this.loggedInUserRefreshToken = token.refresh ?? null;
   }
@@ -336,7 +339,10 @@ class UserService extends BaseService implements IUserService {
     });
   }
 
-  _handleSuccessfullLogin(apiResponse: any, message: ReturnHandleResponse) {
+  _handleSuccessfullLogin(
+    apiResponse: ApiResponseSuccessfullLogin,
+    message: ReturnHandleResponse
+  ) {
     toastMessageService.addToast(
       new ToastMessage({
         id: Math.random(),
@@ -351,8 +357,8 @@ class UserService extends BaseService implements IUserService {
     this._redirectSuccessfullLogin(apiResponse.subscribed);
   }
 
-  _handleSuccessfullAccessTokenLogin(
-    apiResponse: any,
+  _handleSuccessfullRefreshTokenLogin(
+    apiResponse: ApiResponseSuccessfullRefreshTokenLogin,
     redirect: boolean,
     message?: ReturnHandleResponse
   ) {
@@ -372,7 +378,7 @@ class UserService extends BaseService implements IUserService {
     this.setAuthenticatedUserImage(apiResponse.image);
 
     if (redirect) {
-      return this._redirectSuccessfullLogin(apiResponse.account_status);
+      return this._redirectSuccessfullLogin(apiResponse.subscribed);
     }
   }
 
@@ -388,7 +394,7 @@ class UserService extends BaseService implements IUserService {
     });
   }
 
-  _handleAuthenticatedUserResponse(apiResponse: any) {
+  _handleAuthenticatedUserResponse(apiResponse: ApiResponseAuthenticatedUser) {
     this.setAuthenticatedUserEmail(apiResponse.email);
     this.setAuthenticatedUserFirstName(apiResponse.first_name);
     this.setAuthenticatedUserLastName(apiResponse.last_name);
