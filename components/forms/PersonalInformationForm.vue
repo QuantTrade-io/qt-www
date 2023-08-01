@@ -43,6 +43,7 @@ import { EApiResponseStatus } from "~/services/response/EApiResponseHandler";
 import FirstNameField from "~/components/forms/fields/FirstNameField.vue";
 import ImageField from "~/components/forms/fields/ImageField.vue";
 import LastNameField from "~/components/forms/fields/LastNameField.vue";
+import { ApiResponseAuthenticatedUser } from "~/services/user/TypesUserService";
 
 const { t } = useI18n();
 
@@ -135,6 +136,8 @@ const onSubmit = handleSubmit(async (values) => {
     return;
   }
 
-  userService._handleAuthenticatedUserResponse(response.data.value);
+  userService._handleAuthenticatedUserResponse(
+    response.data.value as ApiResponseAuthenticatedUser
+  );
 });
 </script>

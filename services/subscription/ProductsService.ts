@@ -6,6 +6,7 @@ import { IProductsService } from "./IProductsService";
 import {
   ParamsGetStripeCheckoutApi,
   ParamsGetStripeBillingPortalApi,
+  ApiResponseProductsAndIntercal,
 } from "./TypeProductsService";
 import { Interval } from "~/models/subscription/Interval";
 import { Product } from "~/models/subscription/Product";
@@ -74,7 +75,7 @@ export class ProductsService extends BaseService implements IProductsService {
     });
   }
 
-  setProductsAndInterval(responseData: any) {
+  setProductsAndInterval(responseData: ApiResponseProductsAndIntercal) {
     const featuredProducts: Product[] = [];
     const otherProducts: Product[] = [];
     const intervals: Interval[] = [];

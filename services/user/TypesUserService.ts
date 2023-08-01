@@ -1,5 +1,6 @@
 import { ParamsBaseApi } from "../base/TypesBaseService";
 
+// PARAMETER INPUT PART
 export interface ParamsUserRegisterApi extends ParamsBaseApi {
   body: {
     email: string;
@@ -67,3 +68,29 @@ export interface ParamsPatchAuthenticatedUserApi extends ParamsBaseApi {
 }
 
 export interface ParamsDeleteAuthenticatedUserApi extends ParamsBaseApi {}
+
+// API RESPONSE PART
+export interface UserTokens {
+  access: string | null;
+  refresh: string | null;
+}
+
+export interface ApiResponseSuccessfullLogin {
+  token: UserTokens;
+  account_status: string;
+  subscribed: boolean;
+}
+
+export interface ApiResponseSuccessfullRefreshTokenLogin {
+  access_token: string;
+  account_status: string;
+  subscribed: boolean;
+  image: string;
+}
+
+export interface ApiResponseAuthenticatedUser {
+  email: string;
+  first_name: string;
+  last_name: string;
+  image: string;
+}

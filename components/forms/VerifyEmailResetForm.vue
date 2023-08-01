@@ -32,7 +32,8 @@ const { t } = useI18n();
 
 const { localeProperties } = useI18n();
 
-let urlToken: any = null;
+// Unable to import the correct type reference
+let urlToken: any = "";
 
 definePageMeta({
   layout: "auth",
