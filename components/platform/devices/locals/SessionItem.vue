@@ -65,8 +65,8 @@ interface Props {
 defineProps<Props>();
 
 async function deleteSession(
-  sessionId: string | number,
-  deviceId: string | number
+  sessionId: number | string,
+  deviceId: number | string
 ) {
   submitInProgress.value = true;
   const response = await securityService.deleteSession({

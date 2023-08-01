@@ -124,7 +124,7 @@ const { localeProperties } = useI18n();
 
 const submitInProgress = ref(false);
 
-async function createStripeCheckoutSession(priceId: string | number) {
+async function createStripeCheckoutSession(priceId: number | string) {
   submitInProgress.value = true;
 
   const response = await productsService.getStripeCheckout({

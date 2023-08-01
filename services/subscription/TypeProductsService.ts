@@ -6,7 +6,7 @@ import { TypeInterval } from "~/types/subscription/TypeInterval";
 
 // PARAMETER INPUT PART
 export interface ParamsGetStripeCheckoutApi extends ParamsBaseApi {
-  paramPriceId: string | number;
+  paramPriceId: number | string;
 }
 
 export interface ParamsGetStripeBillingPortalApi extends ParamsBaseApi {}
