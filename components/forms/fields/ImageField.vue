@@ -8,12 +8,13 @@
       />
       <div>
         <Field name="file" type="file">
-          <button
+          <BaseButton
+            :button-theme="themeButtonService.getThemeButtonById(4)"
+            class="font-bold"
             type="button"
-            class="rounded-md bg-white/10 px-3 py-2 text-sm font-semibold shadow-sm hover:bg-white/20"
           >
             <label for="file"> Change Image </label>
-          </button>
+          </BaseButton>
           <input
             id="file"
             style="visibility: hidden"
@@ -37,6 +38,7 @@
 
 <script setup lang="ts">
 import { useField, Field } from "vee-validate";
+import { themeButtonService } from "~/services/theme/ThemeButtonService";
 
 interface Props {
   imageUrl: string;

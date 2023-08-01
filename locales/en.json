@@ -332,6 +332,13 @@
     "requesting": "Sending Email"
   },
   "platform": {
+    "sidebar": {
+      "favourites": "Favourites"
+    },
+    "topbar": {
+      "settings": "Settings",
+      "logout": "Log out"
+    },
     "billing": {
       "hero_leading_text": "Finish Registration",
       "logout": "Logout",
@@ -343,7 +350,23 @@
       "delete_account": "Yes, delete account",
       "deleting_account": "Deleting account",
       "change_email_request": "Change Email",
-      "change_email_sending": "Sending Email"
+      "change_email_sending": "Sending Email",
+      "delete_session": "Delete Session",
+      "deleting_session": "Deleting Session",
+      "billing_portal_title": "Billing Portal",
+      "billing_portal_text": "Check your current billing settings & payment options via the Stripe Billing Portal",
+      "session_overview_title": "Sessions overview",
+      "session_overview_text": "List of all the recently logged in devices with information about the location and usage.",
+      "platform_preferences_title": "Platform Preferences",
+      "platform_preferences_text": "Settings that should be reflected throughout the Platform.",
+      "change_email_title": "Change Email",
+      "change_email_text": "Request a change email link in order to change your current email address.",
+      "delete_account_title": "Delete Account",
+      "delete_account_text": "No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.",
+      "personal_information_title": "Personal Information",
+      "personal_information_text": "Change your personal information here.",
+      "change_password_title": "Change password",
+      "change_password_text": "Update your password associated with your account. This will require a re-login on all of your devices."
     }
   }
 }

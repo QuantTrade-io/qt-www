@@ -1,6 +1,6 @@
 <template>
   <div
-    class="xl:pl-72 bg-slate-100 dark:bg-gray-900 text-gray-700 dark:text-gray-400"
+    class="xl:pl-72 bg-slate-200 dark:bg-gray-900 text-gray-700 dark:text-gray-400"
   >
     <Observer>
       <div

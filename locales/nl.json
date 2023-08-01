@@ -332,6 +332,13 @@
     "requesting": "Email versturen"
   },
   "platform": {
+    "sidebar": {
+      "favourites": "Favorieten"
+    },
+    "topbar": {
+      "settings": "Instellingen",
+      "logout": "Uitloggen"
+    },
     "billing": {
       "hero_leading_text": "Registratie afronden",
       "logout": "Uitloggen",
@@ -342,8 +349,24 @@
     "settings": {
       "delete_account": "Ja, verwijder account",
       "deleting_account": "Account verwijderen",
-      "change_email_request": "Change Email",
-      "change_email_sending": "Sending Email"
+      "change_email_request": "Verander Email",
+      "change_email_sending": "Email verzendem",
+      "delete_session": "Verwijder sessie",
+      "deleting_session": "Sessie verwijderen",
+      "billing_portal_title": "Betaal portaal",
+      "billing_portal_text": "Bekijk de huidige instelling omtrent betalingen & betaal opties via het Stripe betaal portaal",
+      "session_overview_title": "Sessie overzicht",
+      "session_overview_text": "Lijst van alle actieve apparaten met informatie omtrent locatie en gebruik.",
+      "platform_preferences_title": "Platform instellingen",
+      "platform_preferences_text": "Instellingen die effect hebben op het platform.",
+      "change_email_title": "Verander e-mailadres",
+      "change_email_text": "Vraag een link aan waarmee het huidige e-mailadres kan worden veranderd.",
+      "delete_account_title": "Verwijder account",
+      "delete_account_text": "Wilt u niet langer gebruik maken van ons platform? Hier kunt u uw account verwijderen, dit is een niet omkeerbare actie, waarbij alle data en gegevens verwijderd zullen worden.",
+      "personal_information_title": "Persoonlijke informatie",
+      "personal_information_text": "Verander uw persoonlijke informatie hier.",
+      "change_password_title": "Verander wachtwoord",
+      "change_password_text": "Verander uw wachtwoord dat bij dit account hoort. Dit forceert ieder apparaat om opnieuw in te loggen."
     }
   }
 }

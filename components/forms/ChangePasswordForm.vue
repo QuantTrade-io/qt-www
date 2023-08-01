@@ -4,11 +4,10 @@
   >
     <div>
       <h2 class="text-base font-semibold leading-7 dark:text-slate-200">
-        Change password
+        {{ $t("platform.settings.change_password_title") }}
       </h2>
       <p class="mt-1 text-sm leading-6 text-slate-400">
-        Update your password associated with your account. This will require a
-        re-login on all of your devices.
+        {{ $t("platform.settings.change_password_text") }}
       </p>
     </div>
 

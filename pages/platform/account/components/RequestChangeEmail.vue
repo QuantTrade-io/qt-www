@@ -4,18 +4,19 @@
   >
     <div>
       <h2 class="text-base font-semibold leading-7 dark:text-slate-200">
-        Change Email
+        {{ $t("platform.settings.change_email_title") }}
       </h2>
       <p class="mt-1 text-sm leading-6 text-slate-400">
-        Request a change email link in order to change your current email
-        address.
+        {{ $t("platform.settings.change_email_text") }}
       </p>
     </div>
 
     <div class="md:col-span-2">
       <div class="mt-8 flex">
-        <button
-          class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold dark:text-slate-200 shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+        <BaseButton
+          :button-theme="themeButtonService.getThemeButtonById(5)"
+          :disabled="submitInProgress"
+          class="font-bold"
           @click="requestChangeEmail()"
         >
           <BaseSpinnerSmall
@@ -23,7 +24,7 @@
             spinner-text="platform.settings.change_email_sending"
             button-text="platform.settings.change_email_request"
           />
-        </button>
+        </BaseButton>
       </div>
     </div>
   </div>
@@ -32,6 +33,7 @@
 <script setup lang="ts">
 import { userService } from "~/services/user/UserService";
 import { apiResponseHandlerService } from "~/services/response/ApiResponseHandlerService";
+import { themeButtonService } from "~/services/theme/ThemeButtonService";
 import { ToastMessage } from "~/models/response/ToastMessage";
 import { toastMessageService } from "~/services/response/ToastMessageService";
 

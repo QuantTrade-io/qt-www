@@ -4,10 +4,10 @@
   >
     <div>
       <h2 class="text-base font-semibold leading-7 dark:text-slate-200">
-        Personal Information
+        {{ $t("platform.settings.personal_information_title") }}
       </h2>
       <p class="mt-1 text-sm leading-6 text-slate-400">
-        Use a permanent address where you can receive mail.
+        {{ $t("platform.settings.personal_information_text") }}
       </p>
     </div>
     <div>

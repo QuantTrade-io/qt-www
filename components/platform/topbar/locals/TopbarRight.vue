@@ -5,7 +5,6 @@
       type="button"
       class="-m-2.5 p-2.5 text-slate-700 dark:text-slate-400 hover:text-gray-500 dark:hover:text-slate-200"
     >
-      <span class="sr-only">View notifications</span>
       <BellIcon class="h-6 w-6" aria-hidden="true" />
     </button>
 
@@ -18,7 +17,6 @@
         class="-m-1.5 flex items-center p-1.5 hover:text-gray-500 dark:hover:text-slate-200"
       >
         <Observer>
-          <span class="sr-only">Open user menu</span>
           <img
             class="h-8 w-8 rounded-full p-px bg-gray-50"
             :src="userService.authenticatedUserImage!"
@@ -57,7 +55,7 @@
                   class="h-5 w-5 align-middle"
                   aria-hidden="true"
                 />
-                <span>Settings</span>
+                <span>{{ $t("platform.topbar.settings") }}</span>
               </NuxtLink>
             </div>
           </MenuItem>
@@ -67,7 +65,7 @@
               @click="userLogout"
             >
               <ArrowRightOnRectangleIcon class="h-5 w-5" />
-              <span> Sign out </span>
+              <span>{{ $t("platform.topbar.logout") }}</span>
             </button>
           </MenuItem>
         </MenuItems>
