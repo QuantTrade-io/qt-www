@@ -26,7 +26,7 @@ class ApiResponseHandlerService implements IApiResponseHandlerService {
     return this.handleUnhandled();
   }
 
-  handleUnhandled() {
+  handleUnhandled(): ReturnHandleResponse {
     return {
       title: "global.messages.unhandled_response",
       message: "global.messages.unhandled_error",

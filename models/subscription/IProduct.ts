@@ -9,4 +9,5 @@ export interface IProduct extends IBaseModel<IProduct> {
   prices: Price[];
 
   getPriceForInterval(interval: string): number;
+  getPriceIdForInterval(interval: string): number | string;
 }

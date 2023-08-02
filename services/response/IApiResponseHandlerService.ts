@@ -8,6 +8,7 @@ export interface IApiResponseHandlerService {
   handleResponse(
     data: _AsyncData<unknown, FetchError<any> | null>
   ): ReturnHandleResponse;
+  handleUnhandled(): ReturnHandleResponse;
   handleError(errorResponse: FetchError): ReturnHandleResponse;
   handleSuccess(successResponse: ApiSuccessResponse): ReturnHandleResponse;
 }
