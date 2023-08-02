@@ -38,11 +38,10 @@ export class ToastMessage
 
   constructor(data: DataToastMessage) {
     super(data);
-    const { title, message, status, timeout = 5000 } = data;
-    this.title = title;
-    this.message = message;
-    this.setStyling(status);
-    this.timeout = timeout;
+    this.title = data.title;
+    this.message = data.message;
+    this.setStyling(data.status);
+    this.timeout = data.timeout || 5000;
   }
 
   private setStyling(status: EApiResponseStatus): void {

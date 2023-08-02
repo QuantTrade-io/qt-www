@@ -1,8 +1,7 @@
 import camelcaseKeys from "camelcase-keys";
 
 import { IBaseModel } from "./IBaseModel";
-import { DataBaseModel } from "./DataBaseModel";
-import { ParamsBaseData } from "./TypeBaseModel";
+import { DataBaseModel, DataMapResponseKey } from "./DataBaseModel";
 
 // eslint-disable-next-line no-use-before-define
 export abstract class BaseModel<T extends BaseModel<T>>
@@ -26,7 +25,7 @@ export abstract class BaseModel<T extends BaseModel<T>>
   }
 
   // Method to map snake_case keys to camelCase
-  protected mapResponseKeys(data: ParamsBaseData): Partial<T> {
+  protected mapResponseKeys(data: DataMapResponseKey): Partial<T> {
     return camelcaseKeys(data, { deep: true }) as Partial<T>;
   }
 

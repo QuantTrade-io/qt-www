@@ -12,6 +12,6 @@ export interface ISecurityService {
     deviceId: number | string
   ): void;
 
-  getDevices(data: ParamsGetDevices): TypePromiseApiResponse;
-  deleteSession(data: ParamsDeleteSession): TypePromiseApiResponse;
+  getDevices(params: ParamsGetDevices): TypePromiseApiResponse;
+  deleteSession(params: ParamsDeleteSession): TypePromiseApiResponse;
 }

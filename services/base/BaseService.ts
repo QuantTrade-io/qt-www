@@ -2,23 +2,23 @@ import { IBaseService } from "./IBaseService";
 
 export class BaseService implements IBaseService {
   parseUrl({
-    template,
-    templateData,
+    url,
+    urlParams,
     queryParams,
   }: {
-    template: string;
-    templateData?: { [key: string]: boolean | number | string };
+    url: string;
+    urlParams?: { [key: string]: boolean | number | string };
     queryParams?: {
       [key: string]: string | boolean | number | [string, boolean, number];
     };
   }): string {
-    let processedTemplate = template;
-    if (templateData) {
-      Object.keys(templateData).forEach(
+    let processedUrl = url;
+    if (urlParams) {
+      Object.keys(urlParams).forEach(
         (key) =>
-          (processedTemplate = processedTemplate.replace(
+          (processedUrl = processedUrl.replace(
             `{${key}}`,
-            templateData[key].toString()
+            urlParams[key].toString()
           ))
       );
     }
@@ -51,8 +51,8 @@ export class BaseService implements IBaseService {
 
         queryString += keyValue;
       });
-      processedTemplate += queryString;
+      processedUrl += queryString;
     }
-    return processedTemplate;
+    return processedUrl;
   }
 }

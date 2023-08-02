@@ -1,3 +1,4 @@
+import makeAutoObservable from "mobx-store-inheritance";
 import { BaseModel } from "../base/BaseModel";
 import { IUniqueSellingPoint } from "./IUniqueSellingPoint";
 import { DataUniqueSellingPoint } from "./DataUniqueSellingPoint";
@@ -23,6 +24,8 @@ export class UniqueSellingPoint
 
   constructor(data: DataUniqueSellingPoint) {
     super(data);
-    this.description = data.description;
+    makeAutoObservable(this);
+    const mappedData = this.mapResponseKeys(data);
+    this.description = mappedData.description || "";
   }
 }

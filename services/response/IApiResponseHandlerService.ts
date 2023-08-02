@@ -1,14 +1,13 @@
 import type { FetchError } from "ofetch";
 import {
-  ApiSuccessResponse,
-  ReturnHandleResponse,
+  DataApiResponse,
+  DataHandleSuccess,
+  TypeHandleResponse,
 } from "./TypesApiResponseHandler";
 
 export interface IApiResponseHandlerService {
-  handleResponse(
-    data: _AsyncData<unknown, FetchError<any> | null>
-  ): ReturnHandleResponse;
-  handleUnhandled(): ReturnHandleResponse;
-  handleError(errorResponse: FetchError): ReturnHandleResponse;
-  handleSuccess(successResponse: ApiSuccessResponse): ReturnHandleResponse;
+  handleResponse(data: DataApiResponse): TypeHandleResponse;
+  handleUnhandled(): TypeHandleResponse;
+  handleError(errorResponse: FetchError): TypeHandleResponse;
+  handleSuccess(successResponse: DataHandleSuccess): TypeHandleResponse;
 }

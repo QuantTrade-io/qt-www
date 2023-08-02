@@ -1,7 +1,7 @@
 import { ParamsBaseApi } from "../base/TypesBaseService";
 import { TypePromiseApiResponse } from "../response/TypesApiResponseHandler";
 import {
-  ApiResponseProductsAndIntercal,
+  DataProductsAndInterval,
   ParamsGetStripeBillingPortalApi,
   ParamsGetStripeCheckoutApi,
 } from "./TypeProductsService";
@@ -13,13 +13,13 @@ export interface IProductsService {
   intervals: IInterval[];
   interval: IInterval;
 
-  fetchProducts(data: ParamsBaseApi): void;
-  getStripeCheckout(data: ParamsGetStripeCheckoutApi): TypePromiseApiResponse;
+  getProducts(params: ParamsBaseApi): void;
+  getStripeCheckout(params: ParamsGetStripeCheckoutApi): TypePromiseApiResponse;
   getStripeBillingPortal(
-    data: ParamsGetStripeBillingPortalApi
+    params: ParamsGetStripeBillingPortalApi
   ): TypePromiseApiResponse;
 
-  setProductsAndInterval(responseData: ApiResponseProductsAndIntercal): void;
+  setProductsAndInterval(responseData: DataProductsAndInterval): void;
   clearProducts(): void;
   clearIntervals(): void;
 

@@ -1,9 +1,9 @@
 import type { FetchError } from "ofetch";
 import { IApiResponseHandlerService } from "./IApiResponseHandlerService";
 import {
-  ApiSuccessResponse,
-  ReturnHandleResponse,
-  TypeApiResponse,
+  DataHandleSuccess,
+  TypeHandleResponse,
+  DataApiResponse,
 } from "./TypesApiResponseHandler";
 import { EApiResponseStatus } from "./EApiResponseHandler";
 
@@ -16,7 +16,7 @@ class ApiResponseHandlerService implements IApiResponseHandlerService {
    * The ApiResponseHandlingService implements the IApiResponseHandlingService
    *
    */
-  handleResponse(data: TypeApiResponse): ReturnHandleResponse {
+  handleResponse(data: DataApiResponse): TypeHandleResponse {
     if (data.error.value) {
       return this.handleError(data.error.value);
     }
@@ -26,7 +26,7 @@ class ApiResponseHandlerService implements IApiResponseHandlerService {
     return this.handleUnhandled();
   }
 
-  handleUnhandled(): ReturnHandleResponse {
+  handleUnhandled(): TypeHandleResponse {
     return {
       title: "global.messages.unhandled_response",
       message: "global.messages.unhandled_error",
@@ -36,7 +36,7 @@ class ApiResponseHandlerService implements IApiResponseHandlerService {
     };
   }
 
-  handleError(errorResponse: FetchError): ReturnHandleResponse {
+  handleError(errorResponse: FetchError): TypeHandleResponse {
     const title = "global.messages.something_went_wrong";
     let message;
     let isUnhandled = false;
@@ -102,7 +102,7 @@ class ApiResponseHandlerService implements IApiResponseHandlerService {
     };
   }
 
-  handleSuccess(successResponse: ApiSuccessResponse): ReturnHandleResponse {
+  handleSuccess(successResponse: DataHandleSuccess): TypeHandleResponse {
     const title = "global.messages.success";
     let message;
     let isUnhandled = false;

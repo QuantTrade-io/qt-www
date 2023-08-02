@@ -21,7 +21,8 @@ export class Interval extends BaseModel<Interval> implements IInterval {
 
   constructor(data: DataInterval) {
     super(data);
-    this.value = data.value;
-    this.label = data.label;
+    const mappedData = this.mapResponseKeys(data);
+    this.value = mappedData.value || "";
+    this.label = `pricing.${mappedData.value}` || "";
   }
 }

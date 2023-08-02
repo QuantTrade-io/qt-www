@@ -1,3 +1,4 @@
+import makeAutoObservable from "mobx-store-inheritance";
 import { BaseModel } from "../base/BaseModel";
 import { DataPrice } from "./DataPrice";
 import { IPrice } from "./IPrice";
@@ -21,6 +22,7 @@ export class Price extends BaseModel<Price> implements IPrice {
 
   constructor(data: DataPrice) {
     super(data);
+    makeAutoObservable(this);
     this.amount = data.amount / 100;
     this.interval = data.interval;
   }
