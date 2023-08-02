@@ -63,7 +63,9 @@ export class ProductsService extends BaseService implements IProductsService {
     });
   }
 
-  async getStripeBillingPortal(data: ParamsGetStripeBillingPortalApi) {
+  async getStripeBillingPortal(
+    data: ParamsGetStripeBillingPortalApi
+  ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
