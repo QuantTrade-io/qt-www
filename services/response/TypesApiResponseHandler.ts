@@ -1,13 +1,15 @@
 import type { FetchError } from "ofetch";
 import { EApiResponseStatus } from "./EApiResponseHandler";
 
-export type TypeApiResponse = _AsyncData<unknown, FetchError<any> | null>;
+// DATA: object creation
+export type DataApiResponse = _AsyncData<unknown, FetchError<any> | null>;
 
-export type TypePromiseApiResponse = Promise<
-  _AsyncData<unknown, FetchError<any> | null>
->;
+export interface DataHandleSuccess {
+  message: string;
+  status: number;
+}
 
-export interface ReturnHandleResponse {
+export interface DataHandleResponse {
   title: string;
   message: string;
   status: EApiResponseStatus;
@@ -15,7 +17,15 @@ export interface ReturnHandleResponse {
   isSuccess: boolean;
 }
 
-export interface ApiSuccessResponse {
+// TYPE: Return type
+export type TypePromiseApiResponse = Promise<
+  _AsyncData<unknown, FetchError<any> | null>
+>;
+
+export interface TypeHandleResponse {
+  title: string;
   message: string;
-  status: number;
+  status: EApiResponseStatus;
+  isUnhandled: boolean;
+  isSuccess: boolean;
 }

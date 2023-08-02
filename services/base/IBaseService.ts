@@ -1,11 +1,11 @@
 export interface IBaseService {
   parseUrl({
-    template,
-    templateData,
+    url,
+    urlParams,
     queryParams,
   }: {
-    template: string;
-    templateData?: { [key: string]: boolean | number | string };
+    url: string;
+    urlParams?: { [key: string]: boolean | number | string };
     queryParams?: {
       [key: string]: string | boolean | number | [string, boolean, number];
     };

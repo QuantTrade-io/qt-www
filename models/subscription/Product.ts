@@ -1,3 +1,4 @@
+import makeAutoObservable from "mobx-store-inheritance";
 import { BaseModel } from "../base/BaseModel";
 import { UniqueSellingPoint } from "./UniqueSellingPoint";
 import { Price } from "./Price";
@@ -25,15 +26,22 @@ export class Product extends BaseModel<Product> implements IProduct {
 
   constructor(data: DataProduct) {
     super(data);
-    this.name = data.name;
-    this.uniqueSellingPoints = data.uniqueSellingPoints;
-    this.featured = data.featured;
-    this.prices = data.prices;
+    makeAutoObservable(this);
+    const mappedData = this.mapResponseKeys(data);
+    this.name = mappedData.name || "";
+    this.uniqueSellingPoints =
+      mappedData.uniqueSellingPoints?.map(
+        (uniqueSellintPointData) =>
+          new UniqueSellingPoint(uniqueSellintPointData)
+      ) || [];
+    this.featured = mappedData.featured || false;
+    this.prices =
+      mappedData.prices?.map((priceData) => new Price(priceData)) || [];
   }
 
   getPriceForInterval(interval: string): number {
     const price = this.prices.find((price) => price.interval === interval);
-    return price!.amount / 100;
+    return price!.amount;
   }
 
   getPriceIdForInterval(interval: string): number | string {

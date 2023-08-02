@@ -13,14 +13,14 @@ class NewsletterSubscriptionService implements INewsletterSubscriptionService {
    */
   static NEWSLETTER_SUBSCRIBE_URL = `/v1/utils/newsletter-subscribers/`;
 
-  async subscribe(data: ParamsNewsletterApi): TypePromiseApiResponse {
+  async subscribe(params: ParamsNewsletterApi): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: NewsletterSubscriptionService.NEWSLETTER_SUBSCRIBE_URL,
       method: "POST",
-      locale: data.locale,
-      body: data.body,
+      locale: params.locale,
+      body: params.body,
     });
   }
 }

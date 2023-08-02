@@ -1,5 +1,5 @@
 import {
-  ReturnHandleResponse,
+  DataHandleResponse,
   TypePromiseApiResponse,
 } from "../response/TypesApiResponseHandler";
 import {
@@ -49,43 +49,45 @@ export interface IUserService {
   hasLoggedInUserAccountStatus(): boolean;
   getAuthenticatedUserFullName(): string;
 
-  userRegister(data: ParamsUserRegisterApi): TypePromiseApiResponse;
-  userVerifyEmail(data: ParamsUserVerifyEmailApi): TypePromiseApiResponse;
-  userLogin(data: ParamsUserLoginApi): TypePromiseApiResponse;
+  userRegister(params: ParamsUserRegisterApi): TypePromiseApiResponse;
+  userVerifyEmail(params: ParamsUserVerifyEmailApi): TypePromiseApiResponse;
+  userLogin(params: ParamsUserLoginApi): TypePromiseApiResponse;
   userLoginRefreshToken(): TypePromiseApiResponse;
-  userLogout(data: ParamsUserLogoutApi): TypePromiseApiResponse;
+  userLogout(params: ParamsUserLogoutApi): TypePromiseApiResponse;
   userRequestPasswordReset(
-    data: ParamsRequestPasswordResetApi
+    params: ParamsRequestPasswordResetApi
   ): TypePromiseApiResponse;
   userVerifyPasswordReset(
-    data: ParamsVerifyPasswordResetApi
+    params: ParamsVerifyPasswordResetApi
   ): TypePromiseApiResponse;
   userRequestEmailReset(
-    data: ParamsRequestEmailResetApi
+    params: ParamsRequestEmailResetApi
   ): TypePromiseApiResponse;
-  userVerifyEmailReset(data: ParamsVerifyEmailResetApi): TypePromiseApiResponse;
+  userVerifyEmailReset(
+    params: ParamsVerifyEmailResetApi
+  ): TypePromiseApiResponse;
   userRequestEmailVerify(
-    data: ParamsRequestEmailVerifyApi
+    params: ParamsRequestEmailVerifyApi
   ): TypePromiseApiResponse;
   getAuthenticatedUser(): TypePromiseApiResponse;
   patchAuthenticatedUser(
-    data: ParamsPatchAuthenticatedUserApi
+    params: ParamsPatchAuthenticatedUserApi
   ): TypePromiseApiResponse;
   deleteAuthenticatedUser(
-    data: ParamsDeleteAuthenticatedUserApi
+    params: ParamsDeleteAuthenticatedUserApi
   ): TypePromiseApiResponse;
   patchAuthenticatedUserSettings(
-    data: ParamsPatchAuthenticatedUserSettingsApi
+    params: ParamsPatchAuthenticatedUserSettingsApi
   ): TypePromiseApiResponse;
 
   _handleSuccessfullLogin(
     apiResponse: ApiResponseSuccessfullLogin,
-    message: ReturnHandleResponse
+    message: DataHandleResponse
   ): void;
   _handleSuccessfullRefreshTokenLogin(
     apiResponse: ApiResponseSuccessfullRefreshTokenLogin,
     redirect: boolean,
-    message?: ReturnHandleResponse
+    message?: DataHandleResponse
   ): RouteLocationRaw | Promise<void | NavigationFailure> | undefined;
   _redirectSuccessfullLogin(
     subscribed: boolean
@@ -93,6 +95,6 @@ export interface IUserService {
   _handleAuthenticatedUserResponse(
     apiResponse: ApiResponseAuthenticatedUser
   ): void;
-  _handleUnsuccessfullLogin(responseMessage: ReturnHandleResponse): void;
+  _handleUnsuccessfullLogin(responseMessage: DataHandleResponse): void;
   _errorResponseMessages(accountStatus: string): [DataButtonInfo[], string?];
 }

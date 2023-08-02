@@ -6,11 +6,10 @@ import { IProductsService } from "./IProductsService";
 import {
   ParamsGetStripeCheckoutApi,
   ParamsGetStripeBillingPortalApi,
-  ApiResponseProductsAndIntercal,
+  DataProductsAndInterval,
 } from "./TypeProductsService";
 import { Interval } from "~/models/subscription/Interval";
 import { Product } from "~/models/subscription/Product";
-import { TypeProduct } from "~/types/subscription/TypeProduct";
 
 export class ProductsService extends BaseService implements IProductsService {
   /**
@@ -36,65 +35,60 @@ export class ProductsService extends BaseService implements IProductsService {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  async fetchProducts(data: ParamsBaseApi): TypePromiseApiResponse {
+  async getProducts(params: ParamsBaseApi): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: ProductsService.PRODUCTS_URL,
       method: "GET",
-      locale: data.locale,
+      locale: params.locale,
     });
   }
 
   async getStripeCheckout(
-    data: ParamsGetStripeCheckoutApi
+    params: ParamsGetStripeCheckoutApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: this.parseUrl({
-        template: ProductsService.CREATE_STRIPE_CHECKOUT_SESSION,
-        templateData: { priceId: data.paramPriceId },
+        url: ProductsService.CREATE_STRIPE_CHECKOUT_SESSION,
+        urlParams: { priceId: params.paramPriceId },
       }),
       method: "GET",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
     });
   }
 
   async getStripeBillingPortal(
-    data: ParamsGetStripeBillingPortalApi
+    params: ParamsGetStripeBillingPortalApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: ProductsService.CREATE_STRIPE_BILLING_PORTAL,
       method: "GET",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
     });
   }
 
-  setProductsAndInterval(responseData: ApiResponseProductsAndIntercal) {
+  setProductsAndInterval(data: DataProductsAndInterval) {
     const featuredProducts: Product[] = [];
     const otherProducts: Product[] = [];
-    const intervals: Interval[] = [];
 
-    responseData.products.forEach((product: TypeProduct) => {
-      const newProduct = new Product({
-        id: product.id,
-        name: product.name,
-        featured: product.featured,
-        prices: product.prices,
-        uniqueSellingPoints: product.unique_selling_points,
-      });
+    const products = data.products.map(
+      (productData) => new Product(productData)
+    );
 
-      if (newProduct.featured) {
-        featuredProducts.push(newProduct);
+    products.forEach((product: Product) => {
+      if (!product.featured) {
+        otherProducts.push(product);
       } else {
-        otherProducts.push(newProduct);
+        featuredProducts.push(product);
       }
     });
 
@@ -104,21 +98,14 @@ export class ProductsService extends BaseService implements IProductsService {
       ...otherProducts.slice(Math.ceil(otherProducts.length / 2)),
     ];
 
-    responseData.intervals.forEach((interval: string) => {
-      intervals.push(
-        new Interval({
-          id: Math.random(),
-          value: interval,
-          label: `pricing.${interval}`,
-        })
-      );
-    });
-
     this.clearProducts();
     this.clearIntervals();
+
+    this.intervals = data.intervals.map(
+      (valueData) => new Interval({ value: valueData, id: Math.random() })
+    );
     this.products = sortedProducts;
-    this.intervals = intervals;
-    this.interval = intervals[0];
+    this.interval = this.intervals[0];
   }
 
   clearProducts(): void {

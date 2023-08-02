@@ -45,7 +45,7 @@ definePageMeta({
 const dataLoaded = ref(false);
 
 await onMounted(async () => {
-  const response = await productsService.fetchProducts({
+  const response = await productsService.getProducts({
     locale: localeProperties.value.iso!,
   });
 

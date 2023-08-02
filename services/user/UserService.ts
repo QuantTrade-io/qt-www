@@ -5,7 +5,7 @@ import {
   makePersistable,
 } from "mobx-persist-store";
 import {
-  ReturnHandleResponse,
+  DataHandleResponse,
   TypePromiseApiResponse,
 } from "../response/TypesApiResponseHandler";
 import { EApiResponseStatus } from "../response/EApiResponseHandler";
@@ -142,38 +142,38 @@ class UserService extends BaseService implements IUserService {
     return `${this.authenticatedUserFirstName} ${this.authenticatedUserLastName}`;
   }
 
-  async userRegister(data: ParamsUserRegisterApi): TypePromiseApiResponse {
+  async userRegister(params: ParamsUserRegisterApi): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.USER_REGISTER_URL,
       method: "POST",
-      locale: data.locale,
-      body: data.body,
+      locale: params.locale,
+      body: params.body,
     });
   }
 
   async userVerifyEmail(
-    data: ParamsUserVerifyEmailApi
+    params: ParamsUserVerifyEmailApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.USER_VERIFY_EMAIL_URL,
       method: "POST",
-      locale: data.locale,
-      body: data.body,
+      locale: params.locale,
+      body: params.body,
     });
   }
 
-  async userLogin(data: ParamsUserLoginApi): TypePromiseApiResponse {
+  async userLogin(params: ParamsUserLoginApi): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.USER_LOGIN_URL,
       method: "POST",
-      locale: data.locale,
-      body: data.body,
+      locale: params.locale,
+      body: params.body,
     });
   }
 
@@ -189,14 +189,14 @@ class UserService extends BaseService implements IUserService {
     });
   }
 
-  async userLogout(data: ParamsUserLogoutApi): TypePromiseApiResponse {
+  async userLogout(params: ParamsUserLogoutApi): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     // logout server side
     const response = await fetch.request({
       url: UserService.USER_LOGOUT_URL,
       method: "POST",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
       body: {
@@ -211,76 +211,76 @@ class UserService extends BaseService implements IUserService {
   }
 
   async userRequestPasswordReset(
-    data: ParamsRequestPasswordResetApi
+    params: ParamsRequestPasswordResetApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.USER_REQUEST_PASSWORD_RESET,
       method: "POST",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: false,
       refreshToken: false,
-      body: data.body,
+      body: params.body,
     });
   }
 
   async userVerifyPasswordReset(
-    data: ParamsVerifyPasswordResetApi
+    params: ParamsVerifyPasswordResetApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.USER_VERIFY_PASSWORD_RESET,
       method: "PUT",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: false,
       refreshToken: false,
-      body: data.body,
+      body: params.body,
     });
   }
 
   async userRequestEmailReset(
-    data: ParamsRequestEmailResetApi
+    params: ParamsRequestEmailResetApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.USER_REQUEST_EMAIL_RESET,
       method: "POST",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
     });
   }
 
   async userVerifyEmailReset(
-    data: ParamsVerifyEmailResetApi
+    params: ParamsVerifyEmailResetApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.USER_VERIFY_EMAIL_RESET,
       method: "PUT",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: false,
       refreshToken: false,
-      body: data.body,
+      body: params.body,
     });
   }
 
   async userRequestEmailVerify(
-    data: ParamsRequestEmailVerifyApi
+    params: ParamsRequestEmailVerifyApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.USER_REQUEST_EMAIL_VERIFY,
       method: "POST",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: false,
       refreshToken: false,
-      body: data.body,
+      body: params.body,
     });
   }
 
@@ -296,52 +296,52 @@ class UserService extends BaseService implements IUserService {
   }
 
   async patchAuthenticatedUser(
-    data: ParamsPatchAuthenticatedUserApi
+    params: ParamsPatchAuthenticatedUserApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.AUTHENTICATED_USER_URL,
       method: "PATCH",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
-      body: data.body,
+      body: params.body,
     });
   }
 
   async deleteAuthenticatedUser(
-    data: ParamsDeleteAuthenticatedUserApi
+    params: ParamsDeleteAuthenticatedUserApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.AUTHENTICATED_USER_URL,
       method: "DELETE",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
     });
   }
 
   async patchAuthenticatedUserSettings(
-    data: ParamsPatchAuthenticatedUserSettingsApi
+    params: ParamsPatchAuthenticatedUserSettingsApi
   ): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: UserService.AUTHENTICATED_USER_SETTINGS_URL,
       method: "PATCH",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
-      body: data.body,
+      body: params.body,
     });
   }
 
   _handleSuccessfullLogin(
     apiResponse: ApiResponseSuccessfullLogin,
-    message: ReturnHandleResponse
+    message: DataHandleResponse
   ) {
     toastMessageService.addToast(
       new ToastMessage({
@@ -360,7 +360,7 @@ class UserService extends BaseService implements IUserService {
   _handleSuccessfullRefreshTokenLogin(
     apiResponse: ApiResponseSuccessfullRefreshTokenLogin,
     redirect: boolean,
-    message?: ReturnHandleResponse
+    message?: DataHandleResponse
   ) {
     if (message) {
       toastMessageService.addToast(
@@ -401,7 +401,7 @@ class UserService extends BaseService implements IUserService {
     this.setAuthenticatedUserImage(apiResponse.image);
   }
 
-  _handleUnsuccessfullLogin(responseMessage: ReturnHandleResponse) {
+  _handleUnsuccessfullLogin(responseMessage: DataHandleResponse) {
     this.clearStoredData();
 
     const [buttons, message] = this._errorResponseMessages(

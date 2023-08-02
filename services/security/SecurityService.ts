@@ -69,31 +69,31 @@ class SecurityService extends BaseService implements ISecurityService {
     this.devices.splice(index, 1);
   }
 
-  async getDevices(data: ParamsGetDevices): TypePromiseApiResponse {
+  async getDevices(params: ParamsGetDevices): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: this.parseUrl({
-        template: SecurityService.DEVICES_URL,
+        url: SecurityService.DEVICES_URL,
         queryParams: { refresh_token: userService.loggedInUserRefreshToken! },
       }),
       method: "GET",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
     });
   }
 
-  async deleteSession(data: ParamsDeleteSession): TypePromiseApiResponse {
+  async deleteSession(params: ParamsDeleteSession): TypePromiseApiResponse {
     const fetch = useCustomFetch();
 
     return await fetch.request({
       url: this.parseUrl({
-        template: SecurityService.SESSION_ITEM_URL,
-        templateData: { sessionId: data.sessionId },
+        url: SecurityService.SESSION_ITEM_URL,
+        urlParams: { sessionId: params.sessionId },
       }),
       method: "DELETE",
-      locale: data.locale,
+      locale: params.locale,
       accessToken: true,
       refreshToken: true,
     });
