@@ -5,7 +5,7 @@
     >
       <PricingBackground />
       <div
-        v-for="product in productsService.products"
+        div v-for="(product, index) in productsService.products"
         :key="product.id"
         :class="[
           product.featured
@@ -62,16 +62,10 @@
                   : 'bg-white/10 hover:bg-white/20 focus-visible:outline-white',
                 'rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer',
               ]"
-              @click="
-                createStripeCheckoutSession(
-                  product.getPriceIdForInterval(
-                    productsService.getInterval().value
-                  )
-                )
-              "
+              @click="() => createStripeCheckoutSession(product.getPriceIdForInterval(productsService.getInterval().value), index)"
             >
               <BaseSpinnerSmall
-                :submit-in-progress="submitInProgress"
+                :submit-in-progress="submitInProgressArray[index]"
                 spinner-text="pricing.buying_plan"
                 button-text="pricing.buy_plan"
               />
@@ -122,16 +116,17 @@ import { toastMessageService } from "~/services/response/ToastMessageService";
 
 const { localeProperties } = useI18n();
 
-const submitInProgress = ref(false);
+// const submitInProgress = ref(false);
+const submitInProgressArray = reactive(productsService.products.map(() => false));
 
-async function createStripeCheckoutSession(priceId: number | string) {
-  submitInProgress.value = true;
+async function createStripeCheckoutSession(priceId: number | string, index: number) {
+  submitInProgressArray[index] = true;
 
   const response = await productsService.getStripeCheckout({
     locale: localeProperties.value.iso!,
     paramPriceId: priceId,
   });
-  submitInProgress.value = false;
+  submitInProgressArray[index] = false;
 
   const message = apiResponseHandlerService.handleResponse(response);
 
