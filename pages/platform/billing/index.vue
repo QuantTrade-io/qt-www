@@ -2,7 +2,7 @@
   <div class="flex h-screen">
     <div class="flex flex-1 flex-col">
       <div class="ml-2">
-        <ButtonLogout/>
+        <ButtonLogout />
       </div>
       <Observer>
         <div class="isolate overflow-hidden">
